@@ -1,0 +1,40 @@
+*{
+	box-sizing: border-box;
+}
+.header{
+	float: inline-start;
+	height: 20%;
+	border: 1px solid #8c9900;
+}
+#headerLeft{
+	width: 30%;
+	height: 100%;
+}
+#headerRight{
+	width: 70%;
+	height: 100%;
+}
+.header .logo{
+	alig: left;
+	border: 1px solid #990000;
+}
+.content{
+	height: 100%;
+	width: 100%;
+	border: 1px solid #009947;
+}
+.text-content{
+	height: 100%;
+	width:  60%;
+	border: 1px solid #260099;
+}
+.link-trans{
+	height: 100%;
+	width: 40%;
+	border: 1px solid #940099;
+}
+.footer{
+	height: 20%;
+	 width: 100%;
+	 border: 1px solid #990002;
+}

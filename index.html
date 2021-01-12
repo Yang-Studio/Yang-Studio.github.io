@@ -6,96 +6,42 @@
 	<meta name="keywords" content="personal" /> 
 	<meta name="description" content="describe what i'm doing" />
 	<metaname="viewport" content="width=device-width; initial-scale=1"/>
-	
-  <style>
-	*{
-		box-sizing: border-box;
-	}
-	.header{
-		float: left;
-		height: 16%;
-		width: 100%;
-	}
-	.header #headerLeft{
-		width: 30%;float: left;
-		height: 100%;
-	}
-	.header #headerRight{
-		width: 70%;
-		float: left;
-		height: 100%;
-		white-space:nowrap;
-		
-	}
-	.header .logo{
-		float: left;
-		height: 106%;
-		font-size: 70px;
-		margin-top: -1%;
-		
-	}
-	.content{
-		height: 100%;
-		width: 100%;
-	}
-	.text-content{
-		height: 100%;float: left;
-		width:  50%;
-	}
-	.link-trans{
-		height: 100%;
-		width: 40%;float: left;
-		
-	}
-	.footer{
-		height: 50%;
-		 width: 100%;
-		 background-color: #000000;
-		margin-top: 100%;
-		 
-	} 
-	.footer .footLeft{
-		width: 40%;
-		height: 100%;
-		
-	}
-	.footer .footRight{
-		width: 40%;
-		height: 100%;float: left;
-		margin-left: 10%;
-		
-	
+	<link href="/lerically.github.io/css/main.css"type="text/css"rel="stylesheet">
+	<script>
+	$(document).ready(function(){
+	function t(){
+	var e = $(".footer");//获取页脚div的对象
+	var h = e.offset().top + e.height() ;//获取页脚偏移量加页脚高度的值
+	//判断页脚div底部到页面顶端的实际距离是否小于页面可见区域高度
+	if(h < document.body.clientHeight){
+	//当页面刚好可以包容所有内容不需要下拉时直接加上个定位就是了，当然这里也可以用绝对和相对属性
+	//具体设置根据你实际情况来定吧
+	  $(".footer").css({position:"fixed",left:"20%",bottom:"0px"});
+	  return;
 	}
 	
-   </style>
-   <style>
-   ul
-   {
-   list-style-type:none;
-   margin:0;
-   padding:0;
-   }
-   li
-   {
-   display:inline;
-   float: left;
-   list-style: none;
-   }
-   a:link,a:visited
-   {
-   font-weight:bold;
-   color:#000000;
-   
-   padding:50px;
-   text-decoration:none;
-   text-transform:uppercase;
-   }
-   a:hover,a:active
-   {
-    border-bottom: 1px solid;
-    padding: 5px;
-   }
-   </style>
+	function t2(){
+	  var a = $(document).scrollTop()+document.documentElement.clientHeight;//获取页面滑动偏移量加页面可见区域的高度
+	//判断页脚div底部到页面顶端的实际距离是否小于页面滑动偏移量加页面可见区域高度
+	if(a >= h){
+	//如果页面内容太多，需要下滑展示的时候，给页脚一个固定定位属性
+	$(".footer").css({position:"fixed",left:"20%",bottom:"0px"});
+	}else{
+	//当页面重新上滑页脚需要被隐藏的时候移除它的定位属性，这样不论何时，它肯定是被页面撑起来固定到底部展示的。
+	 $(".footer").removeAttr("style");
+	}
+	}
+	t2();
+	//在页面大小改变时触发方法t2
+	 $(document).resize(t2);
+	 //在页面滑动时触发方法t2
+	 $(document).scroll(t2);
+	}
+	//直接运行方法t
+	t();
+	
+	});
+	</script>
 </head>
 <body>
 	<section id="header">
@@ -103,22 +49,20 @@
 			<div id="headerLeft">
 				<h1 class="logo">LERIC</h1>
 			</div>
-			<div id="headerRight">
-				<div style="padding-top: 6%; font-size:30px;" align="right">
-					<ul>
-						<li>
-							<a href="/lerically.github.io/index.html">Home</a>&#8195;&#8195;
-						</li>
-					</ul>
+			<div style="margin-top: 2%;margin-left: 40%;">
+				<nobr>
+					<div style="padding-top: 6%; font-size:30px;">
+						<ul>
+							<li>
+								<a href="/lerically.github.io/index.html">Home</a>&#8195;&#8195;
+								
+									<a href="/lerically.github.io/ChildPages/porfolio.html" >Porfolio</a>
+							</li>
+						</ul>
 						
-					
-					<ul>
-						<li>
-							<a href="/lerically.github.io/ChildPages/porfolio.html">Porfolio</a>
-						</li>
-					</ul>
-					
-				
+					</div>
+				</nobr>
+			</div>
 		</div>
 	</section>
 	
@@ -136,37 +80,56 @@
 	
 	
 	<section id="text">
-		<div class="text-content">
-			<h1>Why interactive?</h1>
-			<p style="font-size: 15px;">I think because it can touch on unknown issues in different fields. Whenever I meet a new problem, my first reaction is excitement, followed by constant trying. Whenever I solve a problem, a sense of achievement will remove my fatigue. I will also improve myself in the process. I am happiest when I can help others solve their problems because of the same issues others face today. I may be meeting tomorrow. And with access to the most cutting-edge people in technology, maybe my next design will change the world? I get excited just thinking about it.</p>
+		<div class="webcontent">
+			<h1 class="leftContent" style="text-align: left;">Why interactive?</h1><br>
+			<p style="font-size: 15px;text-align: left;margin-left: 5%;">I think because it can touch on unknown issues in different fields. Whenever I meet a new problem, my first reaction is excitement, followed by constant trying. Whenever I solve a problem, a sense of achievement will remove my fatigue. I will also improve myself in the process. I am happiest when I can help others solve their problems because of the same issues others face today. I may be meeting tomorrow. And with access to the most cutting-edge people in technology, maybe my next design will change the world? I get excited just thinking about it.</p>
 		</div>
-		<div class="link-trans"  style="margin-top: 3%;margin-left: 5%;">
-			<ul>
-				<li>
-					<a style="font-style: oblique;" href="/lerically.github.io/ChildPages/photography.html">photography artwork</a>
-				</li>
-			</ul>
-			<br>
-			<br>
-			<ul>
-				<li>
-					<a style="font-style: oblique;" href="/lerically.github.io/ChildPages/handmaking.html">handmaking</a>
-				</li>
-			</ul>
-			<br>
-			<br>
-			<ul>
-				<li>
-					<a  style="font-style: oblique;" href="/lerically.github.io/ChildPages/modeling.html">modeling</a>
-				</li>
-			</ul>
-			<br>
-			<br>
+		<div class="webcontent"  style="margin-left: 10%;">
 			
-					
-					
+				<ul>
+					<li>
+						<nobr><a style="font-style: oblique;font-size: 30px;text-align: left;" href="/lerically.github.io/ChildPages/photography.html">photography artwork</a></nobr>
+					</li>
+				</ul>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<ul>
+					<li>
+						<a style="font-style: oblique;font-size: 30px;" href="/lerically.github.io/ChildPages/handmaking.html">handmaking</a>
+					</li>
+				</ul>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<ul>
+					<li>
+						<a  style="font-style: oblique;font-size: 30px;" href="/lerically.github.io/ChildPages/modeling.html">modeling</a>
+					</li>
+				</ul>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+		
 		</div>
-		<div class="text-content">
+		
+		
+		<div class="webContent">
 			<h1>Every day try new things!!</h1>
 			<p>I think getting in touch with some new fields every day is a kind of mental relaxation. It not only broadens my knowledge but also keeps me curious as a child. Only by touching a different field every day and finding the connection between it and people can I find the reason for fighting for it</p>
 		</div>
@@ -179,14 +142,14 @@
 	
 	
 	<section id="footer" >
-		<div class="footer">
-			<div class="footLeft"style="margin-top:10% ;">
+		<footer>
+			<div class="footer" style="text-align: center;">
 				<h1 style="color: aliceblue; font-size: 5px;">Email:13716919012@163.com</h1>
 				<h1 style="color: aliceblue;font-size: 5px;">Instgram:LiuYang_Leric</h1>	
 				<h1 style="color: aliceblue;font-size: 5px;">Facebook:leric leo</h1>
 				<h1 style="color: #FFFFFF;font-size: 5px;">Contect Me©Yang Liu</h1>
 			</div>
-		</div>
+		</footer>
 	</section>
 </body>
 </html>

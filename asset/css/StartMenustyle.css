@@ -1,0 +1,104 @@
+html,
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Baloo 2", sans-serif;
+}
+
+body {
+  background: linear-gradient(112deg, #ffffff 49%, #000000 49%);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  grid-template-rows: 16.66% 16.66% 16.66% 16.66% 16.66%;
+  column-gap: 0;
+  row-gap: 30px;
+  height: 100vh;
+}
+
+.Left-Text{
+  grid-column: 1/4;
+  grid-row: 2/5;
+  margin: auto;
+  text-align: center;
+  align-self: center;
+}
+
+.Left-Text h1{
+  color: #000000;
+  font-size: 2.5vw;
+}
+
+.Mid-para{
+  grid-column: 4/6;
+  grid-row: 5/8;
+  margin: auto;
+  text-align: center;
+  align-self: center;
+  
+}
+
+.Mid-para p{
+  color: #ffffff;
+  opacity: 0.4;
+}
+
+.Right-Text{
+  grid-column: 6/9;
+  grid-row: 2/5;
+  margin: auto;
+  text-align: center;
+  align-self: center;
+}
+
+.Right-Text h1{
+  font-size: 2.5vw;
+  color: #ffffff;
+}
+
+
+
+.Logo-Container{
+  grid-column: 4/6;
+  grid-row: 2/5;
+  margin: auto;
+  text-align: center;
+  align-self: center;
+}
+
+.Logo {
+  
+  width: calc(8vw + 8vh);
+  opacity: 0.3;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.Logo:hover{
+  width: calc(14vw + 14vh);
+  opacity: 1;
+ 
+}
+
+#typed {
+  color: orangered;
+}
+
+
+
+@keyframes fadeInOut {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+div {
+  animation: fadeInOut 2s linear forwards;
+}

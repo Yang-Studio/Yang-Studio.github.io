@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Example</title>
+    <link href="./css/Style.css" rel="stylesheet">
+    <link href="./css/bootstrap-grid.css" rel="stylesheet">
+    <link href="./css/bootstrap-4.4.1.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="sideDotNavbar">
+        <div class="dot-info"></div>
+    </div>
+    <section class="grid-container" id="HOME">
+        <div id="particles-js">
+        </div>
+        <div class="MainPageParagraph">
+            <h1>LIU <span id="Yang">YANG</span></h1>
+        </div>
+        <div class="MainPageSmallDescribe">
+            <h1 style="font-size: 2vw;">A Game Developer</h1>
+        </div>
+
+        <div class="Guide">
+            <h1>━━━━━━ Scroll</h1>
+        </div>
+
+    </section>
+
+
+
+
+    <section class="grid-AboutMe row justify-content-center" id="ABOUT">
+
+        <div class="AbAboutMe-Background"></div>
+
+        <div class="AboutMe-Title">
+            <h1 style="font-size: 4vw;"><strong>ABOUT</strong> ME</h1>
+            <hr>
+        </div>
+        <div class="AboutMe-Image col-4 ">
+            <div class="niceBack col-4"><img src="./img/Self.jpg" class="col-4"></div>
+
+        </div>
+        <div class="AboutMe-Paragraph col-4">
+            <p>
+                <strong style="font-size:1.5vw;">Info</strong>
+                <br>
+                Name: LiuYang <br>
+                College: Savannah College of Art and Design<br>
+                Phone: +191 2643 9455 <br>
+                Email: yanliu34@student.scad.edu<br>
+                <br><br>
+                <strong>6 </strong>Project Complete<br>
+                <button class="CV-Download" type="button" id="Download">
+                    <h1>Download CV</h1>
+                </button>
+            </p>
+        </div>
+        <div class="row justify-content-center">&nbsp</div>
+        <div class="row justify-content-center">&nbsp</div>
+    </section>
+
+
+
+
+
+    <section class="grid-MyPortfolio" id="PORTFOLIO">
+        <div class="portfolio-Title">
+            <h1 style="font-size:4vw;"><strong>Portfolio</strong> Gallery</h1>
+            <hr>
+        </div>
+
+
+        <div class="Portfolio-r1-c1-Photo">
+            <img src="./img/Portfolio/Labtory/Icon.png" alt="Portfolio-1" data-toggle="modal" data-target="#Labtory">
+            <div class="PF-D-overlay">
+                <h1>Env</h1>
+                <p>Labtory</p>
+            </div>
+        </div>
+        <!-- Modal for P-1 -->
+        <div class="modal fade" id="Labtory" style="background-color: rgba(255, 255, 255, 0.3);">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Labtory</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="CloseBtn">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body Container">
+                        <div class="row justify-content-center">
+                            <img src="./img/Portfolio/Labtory/2.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-1</p><br>
+                        </div><div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center">
+                            <img src="./img/Portfolio/Labtory/3.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-2</p><br>
+                        </div><div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center">
+                            <img src="./img/Portfolio/Labtory/4.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-3</p><br>
+                        </div><div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center">
+                            <img src="./img/Portfolio/Labtory/6.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-4</p><br>
+                        </div><div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center">
+                            <img src="./img/Portfolio/Labtory/HeroAsset.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Container</p><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="Portfolio-r1-c2-Photo">
+            <img src="./img/Portfolio/Milo/Icon.png" alt="Portfolio-1" alt="Portfolio-1" data-toggle="modal"
+                data-target="#Milo">
+            <div class="PF-D-overlay">
+                <h1>Game</h1>
+                <p>Milo</p>
+            </div>
+
+        </div>
+        <!-- Modal for P-2 -->
+        <div class="modal fade" id="Milo" style="background-color: rgba(255, 255, 255, 0.3);">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="./img/Portfolio/Milo/TeamLogo.png" style="width: 5%;">
+                        <h5 class="modal-title">Milo's Adventure</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="CloseBtn">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body Container">
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Milo/6.png"
+                                class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-1</p>
+                        </div>
+                        <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Milo/2.png"
+                                class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-2</p>
+                        </div>
+                        <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Milo/3.png"
+                                class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-3</p>
+                        </div>
+                        <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Milo/4.png"
+                                class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-4</p>
+                        </div>
+                        <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Milo/1.png"
+                                class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-5</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Portfolio-r1-c3-Photo">
+            <img src="./img/Portfolio/Photography/Icon.png" alt="Portfolio-1" alt="Portfolio-1" data-toggle="modal"
+                data-target="#Photography">
+            <div class="PF-D-overlay">
+                <h1>Photography</h1>
+                <p>collection</p>
+            </div>
+
+        </div>
+        <!-- Modal for P-3 -->
+        <div class="modal fade" id="Photography" style="background-color: rgba(255, 255, 255, 0.3);">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Photography collection</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="CloseBtn">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body Container">
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Photography/4.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-1</p></div>
+                            <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Photography/2.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-2</p></div>
+                            <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Photography/3.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-3</p></div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Portfolio-r2-c1-Photo">
+            <img src="./img/Portfolio/UI/Icon.png" alt="Portfolio-1" alt="Portfolio-1" data-toggle="modal"
+                data-target="#UI">
+            <div class="PF-D-overlay">
+                <h1>UI/UX</h1>
+                <p>Reminder App</p>
+            </div>
+        </div>
+        <!-- Modal for P-4 -->
+        <div class="modal fade" id="UI" style="background-color: rgba(255, 255, 255, 0.3);">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reminder App</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="CloseBtn">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body  Container">
+                        <div class="row justify-content-center"> <img src="./img/Portfolio/UI/3in1 iphones mockup.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-1</p></div>
+                            <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/UI/Scene 14-2.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-2</p></div>
+                            <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/UI/Scene 14.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-3</p></div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Portfolio-r2-c2-Photo">
+            <img src="./img/Portfolio/Forest/Icon.png" alt="Portfolio-1" alt="Portfolio-1" data-toggle="modal"
+                data-target="#LowPolyForest">
+            <div class="PF-D-overlay">
+                <h1>Environment</h1>
+                <p>Lowpoly</p>
+            </div>
+        </div>
+        <!-- Modal for P-5 -->
+        <div class="modal fade" id="LowPolyForest" style="background-color: rgba(255, 255, 255, 0.3);">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Lowpoly</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="CloseBtn">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body Container">
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Forest/1.png"
+                                class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-1</p>
+                        </div>
+                        <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-center"><img src="./img/Portfolio/Forest/3.png"
+                                class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-2</p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Portfolio-r2-c3-Photo">
+            <img src="./img/Portfolio/OuterSpace/Icon.png" alt="Portfolio-1" alt="Portfolio-1" data-toggle="modal"
+                data-target="#OuterSpace">
+            <div class="PF-D-overlay">
+                <h1>Environment</h1>
+                <p>Outer Space</p>
+            </div>
+
+        </div>
+        <!-- Modal for P-6 -->
+        <div class="modal fade" id="OuterSpace" style="background-color: rgba(255, 255, 255, 0.3);">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Outer Space</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="CloseBtn">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body Container">
+                        <div class="row justify-content-start">
+                            <img src="./img/Portfolio/OuterSpace/1.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-1</p>
+                        </div>
+                        <div class="row justify-content-center">&nbsp</div>
+                        <div class="row justify-content-end">
+                            <img src="./img/Portfolio/OuterSpace/2.png" class="col-12 col-md-8">
+                            <p class="col-6 col-md-4">Shot-2</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="grid-MyFooter">
+        <div class="MyFooter">
+            <p>&copy; 2024.LiuYang All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+    const options = {
+      strings: [
+        'Yang',
+        'Yang ^3000',
+      ],
+      typeSpeed: 500, 
+      startDelay: 1000, 
+      loop: true, 
+    };
+
+    const typed = new Typed('#Yang', options);
+  </script>
+
+
+
+    <script type="text/JavaScript" src="./js/Base.js"></script>
+    <script type="text/JavaScript" src="./js/particles.js"></script>
+    <script type="text/JavaScript" src="./js/app.js"></script>
+
+    <script type="text/JavaScript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/JavaScript" src="js/bootstrap-4.4.1.js"></script>
+
+
+    <script src="https://unpkg.com/simplebar/dist/simplebar.min.js"></script>
+
+</body>
+
+</html>

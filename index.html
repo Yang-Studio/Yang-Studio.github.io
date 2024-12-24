@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="game designer's portfolio">
+    <title>Yang's Portfolio</title>
+    
+    <!-- 字体引入 -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 样式表 -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div class="loading-screen">
+        <div class="loading-animation">
+            <div class="pixel-logo"></div>
+
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="game-nav">
+        <div class="nav-container">
+            <div class="logo">Yang's Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="#Home" class="nav-item">HOME</a></li>
+                <li><a href="#portfolio" class="nav-item">PORTFOLIO</a></li>
+                <li><a href="#Skill" class="nav-item">ABOUT ME</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header id="Home" class="hero-section">
+        <div class="video-background">
+            <video autoplay muted loop playsinline id="heroVideo">
+                <source src="https://dl.dropboxusercontent.com/scl/fi/ofwsfeouuom9osg7l7jfn/BG.mp4?rlkey=w31m7obtd0vckglthytlksakw&st=t2j9mzpw" type="video/mp4">
+                <!-- 可以添加多个source，支持不同格式 -->
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Yang Liu</h1>
+            <p class="typewriter-text">For The Best Player Experience</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">My Portfolio</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 作品集区域 -->
+    <section id="portfolio" class="portfolio-section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="portfolio-grid">
+            <!-- 作品卡片示例 -->
+            <!-- <div class="project-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="./asset/photo/405/" alt="ShanHe">
+                        <h3>ShanHe</h3>
+                    </div>
+                </div>
+            </div>-->
+            <!-- ShanHe -->
+
+            
+        </div>
+    </section>
+
+
+    <!-- 技能树区域 -->
+    <section id="Skill" class="skills-section">
+        <h2 class="section-title">Skill</h2>
+        <div class="skills-container">
+            <div class="skill-tree">
+                <!-- 技能树内容将由JavaScript动态生成 -->
+            </div>
+            <div class="profile-image-container">
+                <!-- 这里可以添加你的图片 -->
+                <img src="https://dl.dropboxusercontent.com/scl/fi/mqm3vzs85y4u3lz39l32w/Yang.jpg?rlkey=fl4awye7fjdkh32rnzs5ogwj8&st=a61siy0h" alt="Profile Image" style="width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 页脚 -->
+    <footer class="game-footer">
+        <div class="footer-content">
+            
+            
+            <div class="footer-section">
+                <h3>Quick links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#portfolio">PORTFOLIO</a></li>
+                    <li><a href="#about">ABOUT ME</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>SOCIAL MEDIA</h3>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/lerically/" class="social-icon" title="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/yangliu_leric/" class="social-icon" title="Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.artstation.com/yang_2004" class="social-icon" title="ArtStation" target="_blank">
+                        <i class="fab fa-artstation"></i>
+                    </a>
+                    <a href="https://github.com/Lerically" class="social-icon" title="GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-logo">YangLiu</div>
+            <p class="copyright">© 2024 YangLiu | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -48,9 +48,7 @@
       overflow: hidden;
       text-align: center;
     }
-    /* 注意：取消了 autoplay 属性，并添加 controls 方便用户手动播放 */
     .project-hero video {
-      /* autoplay 属性已移除 */
       controls muted loop
       ;
       position: absolute;
@@ -166,7 +164,6 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     }
 
-    /* 附加素材区域：Extra Screenshots - 两张图左右排列 */
     .extra-screenshots {
       display: flex;
       justify-content: center;
@@ -774,7 +771,6 @@
         const video = document.createElement("video");
         video.src = src;
         video.controls = true;
-        // 不设置 autoplay
         lightboxContent.appendChild(video);
       }
       lightbox.classList.add("active");

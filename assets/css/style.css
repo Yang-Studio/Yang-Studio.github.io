@@ -1,0 +1,9 @@
+/* 导入分离的CSS文件 */
+@import 'base.css';
+@import 'navbar.css';
+@import 'hero.css';
+@import 'skills.css';
+@import 'about.css';
+@import 'portfolio.css';
+@import 'footer.css';
+@import 'responsive.css';

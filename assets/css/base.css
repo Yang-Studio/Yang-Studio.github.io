@@ -1,0 +1,166 @@
+/* 全局样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    position: relative;
+    font-size: 16px; /* 基础字体大小 */
+    text-rendering: optimizeLegibility; /* 优化文本渲染 */
+    -webkit-font-smoothing: antialiased; /* 平滑字体 */
+    -moz-osx-font-smoothing: grayscale; /* 平滑字体 */
+}
+
+/* 高端背景效果 */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 20%,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 20%,
+        transparent 50%
+    ), linear-gradient(
+        135deg,
+        var(--bg-color) 0%,
+        var(--bg-color) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 80% 80%,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 20%,
+        transparent 50%
+    );
+    z-index: -1;
+    animation: float 10s infinite ease-in-out;
+    will-change: transform; /* 优化性能 */
+}
+
+@keyframes float {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(-10px, -10px, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 暗色模式变量 - 优化对比度 (符合WCAG AA标准) */
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.9); /* 提高透明度以增加对比度 */
+    --text-tertiary: rgba(255, 255, 255, 0.75); /* 提高透明度以增加对比度 */
+    --link-color: #5dafff; /* 提高亮度以增加对比度，符合4.5:1对比度要求 */
+    --link-hover-color: #8cc5ff;
+    --footer-bg-color: #1a1a1a;
+    --card-bg-color: rgba(255, 255, 255, 0.1); /* 提高透明度以增加对比度 */
+    --card-hover-bg-color: rgba(255, 255, 255, 0.15);
+    --button-bg-color: #0078d4; /* 更高对比度的蓝色 */
+    --button-hover-bg-color: #2b88d8;
+    --button-text-color: #ffffff;
+    --focus-outline-color: #8cc5ff;
+    --error-color: #ff5252; /* 更高对比度的红色 */
+    --success-color: #4caf50;
+    --warning-color: #ffab40; /* 更高对比度的橙色 */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* 各板块通用样式 */
+.section {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    box-sizing: border-box;
+    /* 移除overflow-y: auto以消除滚动条 */
+}
+
+/* 内容容器 */
+.content-container {
+    width: 65%;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-height: 90vh;
+    /* 移除overflow-y: auto以消除滚动条 */
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--link-color);
+    border-radius: 2px;
+}
+
+.section p {
+    font-size: 18px;
+    max-width: 80%;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}

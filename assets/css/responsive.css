@@ -1,0 +1,284 @@
+/* 响应式设计 - 优化断点 */
+/* 大型设备 (桌面端, 1200px 及以上) */
+@media (min-width: 1200px) {
+    .content-container {
+        width: 80%;
+        max-width: 1400px;
+    }
+    
+    .hero h1 {
+        font-size: 72px;
+    }
+    
+    .portfolio-items {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* 改善大屏幕上的阅读体验 */
+    .about-text p {
+        font-size: 1.2rem;
+        line-height: 1.9;
+        max-width: 90%;
+        margin: 0 auto 25px;
+    }
+    
+    /* 优化大屏幕上的导航间距 */
+    .nav-links {
+        gap: 40px;
+    }
+}
+
+/* 中型设备 (平板电脑横屏, 992px-1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .content-container {
+        width: 85%;
+    }
+    
+    .hero h1 {
+        font-size: 60px;
+    }
+    
+    .portfolio-items {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 40% 60%;
+    }
+    
+    /* 优化中等屏幕上的导航体验 */
+    .nav-link {
+        padding: 8px 14px;
+    }
+}
+
+/* 小型设备 (平板电脑竖屏, 768px-991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .content-container {
+        width: 90%;
+    }
+    
+    .hero h1 {
+        font-size: 48px;
+    }
+    
+    .section h2 {
+        font-size: 32px;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .portfolio-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 30px;
+    }
+    
+    .about-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* 优化平板竖屏导航体验 */
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+    
+    /* 改善平板上的按钮触摸体验 */
+    .nav-link, .view-portfolio-btn {
+        padding: 10px 16px;
+    }
+    
+    /* 优化平板上的卡片布局 */
+    .card-image {
+        height: 280px;
+    }
+}
+
+/* 超小型设备 (手机, 767px 及以下) */
+@media (max-width: 767px) {
+    .hero h1 {
+        font-size: 36px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+    
+    .section h2 {
+        font-size: 28px;
+    }
+
+    .section p {
+        font-size: 16px;
+        max-width: 100%;
+        line-height: 1.6;
+    }
+
+    .nav-dots {
+        left: 10px;
+        gap: 15px;
+    }
+
+    .section {
+        margin: 0 5%;
+        margin-bottom: 60px; /* 增加各部分之间的间距 */
+    }
+    
+    .content-container {
+        width: 95%;
+        padding: 0 15px;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        gap: 30px;
+        border-radius: 20px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+    
+    .about-text h3 {
+        font-size: 2rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+    
+    /* 增加portfolio部分在移动端的底部边距，防止被footer覆盖 */
+    #portfolio {
+        margin-bottom: 120px;
+    }
+    
+    .portfolio-items {
+        grid-template-columns: 1fr;
+        gap: 25px; /* 增加卡片间距 */
+        margin-bottom: 30px;
+    }
+    
+    .portfolio-header h3 {
+        font-size: 2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .about-image {
+        max-width: 220px; /* 稍微增大图片尺寸 */
+    }
+
+    .social-media {
+        position: static;
+        justify-content: center;
+        margin-top: 25px;
+        gap: 20px; /* 增加社交图标间距 */
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* 导航栏在移动端的优化 */
+    .navbar {
+        padding: 15px 0;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .nav-links {
+        gap: 8px;
+    }
+    
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 14px;
+        border-radius: 16px;
+    }
+    
+    .logo-img {
+        height: 32px;
+    }
+    
+    /* 改善移动端卡片体验 */
+    .portfolio-card {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+    
+    .card-image {
+        height: 240px;
+    }
+    
+    /* 改善移动端按钮体验 */
+    .view-portfolio-btn {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+    
+    .logo span {
+        font-size: 1.2rem;
+    }
+}
+
+/* 超窄设备 (小型手机, 480px 及以下) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 28px;
+        padding: 0 10px;
+        letter-spacing: 1px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+        max-width: 90%;
+    }
+    
+    .nav-container {
+        padding: 0 10px;
+    }
+    
+    .nav-links {
+        gap: 4px;
+    }
+}

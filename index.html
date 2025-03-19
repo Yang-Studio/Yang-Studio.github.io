@@ -9,647 +9,381 @@
     <title>Yang's Portfolio</title>
     <!-- 引入 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- 预加载关键资源 -->
-    <link rel="preload" href="https://dl.dropboxusercontent.com/scl/fi/ofwsfeouuom9osg7l7jfn/BG.mp4?rlkey=w31m7obtd0vckglthytlksakw&st=t2j9mzpw" as="video">
-    <link rel="preload" href="https://dl.dropboxusercontent.com/scl/fi/mqm3vzs85y4u3lz39l32w/Yang.jpg?rlkey=fl4awye7fjdkh32rnzs5ogwj8&st=a61siy0h" as="image">
-    <style>
-        /* 全局样式 */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* 高端背景效果 */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                circle at 20% 20%,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.05) 20%,
-                transparent 50%
-            ), linear-gradient(
-                135deg,
-                var(--bg-color) 0%,
-                var(--bg-color) 50%,
-                rgba(0, 0, 0, 0.2) 100%
-            );
-            z-index: -1;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                circle at 80% 80%,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.05) 20%,
-                transparent 50%
-            );
-            z-index: -1;
-            animation: float 10s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(-10px, -10px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
-        }
-
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* 暗色模式变量 */
-        :root {
-            --bg-color: #121212;
-            --text-color: #ffffff;
-            --link-color: #0077ff;
-            --footer-bg-color: #1a1a1a;
-        }
-
-        /* 亮色模式变量 */
-        body.light-mode {
-            --bg-color: #ffffff;
-            --text-color: #121212;
-            --link-color: #0077cc;
-            --footer-bg-color: #e0e0e0;
-        }
-
-        /* 左侧导航点 */
-        .nav-dots {
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            z-index: 1000;
-        }
-
-        .nav-dot {
-            width: 10px;
-            height: 10px;
-            background-color: var(--text-color);
-            border-radius: 50%;
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .nav-dot:hover {
-            transform: scale(1.5);
-            background-color: var(--link-color);
-        }
-
-        .nav-dot::after {
-            content: attr(data-title);
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-dot:hover::after {
-            opacity: 1;
-        }
-
-        .nav-dot.active {
-            background-color: var(--link-color);
-            transform: scale(1.5);
-        }
-
-        /* 右下角切换按钮 */
-        .toggle-buttons {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .toggle-buttons button {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            background-color: var(--link-color);
-            color: var(--bg-color);
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .toggle-buttons button:hover {
-            transform: scale(1.1);
-        }
-
-        .toggle-buttons button.active {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-        }
-
-        /* 首页 */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background-color: black;
-        }
-
-        .hero video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            color: #ffffff;
-            z-index: 1;
-            animation: fadeIn 2s ease-in-out;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
-            padding: 0 20px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0) 0%,
-                var(--bg-color) 100%
-            );
-            z-index: 2;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* 各板块通用样式 */
-        .section {
-            padding: 80px 20px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
-            margin: 0 10%;
-            margin-bottom: 100px;
-            position: relative;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .section p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* About Me 部分样式 */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-        }
-
-        .about-image {
-            flex: 1;
-            max-width: 300px;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .about-image img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .about-text {
-            flex: 2;
-            text-align: left;
-        }
-
-        /* 社交媒体按钮 */
-        .social-media {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-media a {
-            font-size: 24px;
-            color: var(--link-color);
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-media a:hover {
-            color: var(--text-color);
-            transform: scale(1.2);
-        }
-
-        /* 作品展示 */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .portfolio-item {
-            background-color: var(--bg-color);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .portfolio-content {
-            padding: 20px;
-            background: linear-gradient(
-                to top,
-                var(--bg-color) 0%,
-                rgba(31, 31, 31, 0.9) 100%
-            );
-        }
-
-        .portfolio-item h3 {
-            margin: 0 0 10px;
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .portfolio-item p {
-            font-size: 16px;
-            color: var(--text-color);
-            opacity: 0.8;
-            margin: 0;
-        }
-
-        /* 博客部分样式 */
-        .blog-posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .blog-post {
-            background-color: var(--bg-color);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 20px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .blog-post:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .blog-post h3 {
-            margin: 0 0 10px;
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .blog-post p {
-            font-size: 16px;
-            color: var(--text-color);
-            opacity: 0.8;
-            margin: 0 0 15px;
-        }
-
-        .blog-post a {
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .blog-post a:hover {
-            text-decoration: underline;
-        }
-
-        /* 页脚样式 */
-        footer {
-            background-color: var(--footer-bg-color);
-            color: var(--text-color);
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .section h2 {
-                font-size: 28px;
-            }
-
-            .section p {
-                font-size: 16px;
-            }
-
-            .nav-dots {
-                left: 10px;
-                gap: 15px;
-            }
-
-            .section {
-                margin: 0 5%;
-            }
-
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about-text {
-                text-align: center;
-            }
-
-            .about-image {
-                max-width: 200px;
-            }
-
-            .social-media {
-                position: static;
-                justify-content: center;
-                margin-top: 20px;
-            }
-        }
-    </style>
+    <!-- 预加载关键资源 - 优化加载策略 -->
+    <link rel="preload" href="./assets/photo/Yang.jpg" as="image">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.youtube.com/embed/Lmzynyv4Apo?autoplay=1&mute=1&loop=1&playlist=Lmzynyv4Apo&controls=0">
+    <!-- 引入CSS文件 -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- 引入JavaScript文件 -->
+    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/mobile-nav.js" defer></script>
 </head>
 <body>
-    <!-- 左侧导航点 -->
-    <div class="nav-dots">
-        <div class="nav-dot" data-title="Home" onclick="scrollToSection('home')"></div>
-        <div class="nav-dot" data-title="About" onclick="scrollToSection('about')"></div>
-        <div class="nav-dot" data-title="Portfolio" onclick="scrollToSection('portfolio')"></div>
-        <div class="nav-dot" data-title="Blog" onclick="scrollToSection('blog')"></div>
-    </div>
+    <nav class="navbar" role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="#" class="logo" aria-label="Home">
+                    <img src="./assets/photo/Icon/MyLogo.png" alt="Logo" class="logo-img">
+                    <span>Yang</span>
+                </a>
+            </div>
+            <div class="nav-links" role="menubar" aria-label="主菜单">
+                <a href="#home" class="nav-link" data-section="home" role="menuitem" tabindex="0">Home</a>
+                <a href="#skills" class="nav-link" data-section="skills" role="menuitem" tabindex="0">Skills</a>
+                <a href="#about" class="nav-link" data-section="about" role="menuitem" tabindex="0">About</a>
+                <a href="#portfolio" class="nav-link" data-section="portfolio" role="menuitem" tabindex="0">Portfolio</a>
+            </div>
+            <div class="nav-controls">
+                <a href="./assets/file/Resume_Yang.pdf" class="nav-link" role="menuitem" tabindex="0">Download CV</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- 首页 -->
-    <section id="home" class="hero">
-        <video autoplay muted loop>
-            <source src="https://dl.dropboxusercontent.com/scl/fi/ofwsfeouuom9osg7l7jfn/BG.mp4?rlkey=w31m7obtd0vckglthytlksakw&st=t2j9mzpw" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <h1 data-lang="en">Hi, I'm Yang, a Game Designer</h1>
-        <h1 data-lang="zh" style="display: none;">你好，我是杨,一名游戏设计师</h1>
+    <div class="hero" id="home" role="banner" aria-label="首页横幅">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Lmzynyv4Apo?autoplay=1&mute=1&loop=1&playlist=Lmzynyv4Apo&controls=0&disablekb=1&playsinline=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;" poster="./assets/photo/405/ShanHe.png" aria-hidden="true"></iframe>
+        <h1>Yang's Portfolio</h1>
+        <p>Game Designer</p>
+        <div class="scroll-down" tabindex="0" role="button" aria-label="滚动到关于部分">
+            <div class="arrow"></div>
+        </div>
+    </div>
+    
+    <!-- 技能树 -->
+    <section id="skills" class="section">
+        <div class="content-container">
+            <h3>My Skills</h3>
+            <p>A comprehensive overview of my professional skills and expertise</p>
+            
+            <div class="skills-container">
+                <!-- 技能分类 -->
+                <div class="skills-category">
+                    <div class="category-header">
+                        <i class="fas fa-gamepad"></i>
+                        <h4>Game Design</h4>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>System Design</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Environment Design</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Level Design</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <div class="category-header">
+                        <i class="fas fa-laptop-code"></i>
+                        <h4>Software</h4>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Unreal Engine 5</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Maya</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Adobe Substance 3D Painter</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <div class="category-header">
+                        <i class="fas fa-code"></i>
+                        <h4>Programming</h4>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>C#</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JS</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-
+    
     <!-- 关于我 -->
     <section id="about" class="section">
-        <h2 data-lang="en">About Me</h2>
-        <h2 data-lang="zh" style="display: none;">关于我</h2>
-        <div class="about-content">
+        <div class="content-container">
+            <div class="about-content">
             <!-- 图片部分 -->
             <div class="about-image">
-                <img src="https://dl.dropboxusercontent.com/scl/fi/mqm3vzs85y4u3lz39l32w/Yang.jpg?rlkey=fl4awye7fjdkh32rnzs5ogwj8&st=a61siy0h" alt="Your Name">
+                <img src="./assets/photo/Yang.jpg" alt="Yang的照片" loading="lazy" width="400" height="400">
             </div>
             <!-- 文字部分 -->
             <div class="about-text">
-                <p data-lang="en">
-                    Hello, I'm Yang, a game designer. I'm always striving to combine creativity and technology to create games that are both deep and entertaining.
+                <h3>About Me</h3>
+                <p>
+                    ​As a game designer, I hold a bachelor's degree in game development and interactive design. I contributed to "Bubono's Bumperland" as a system and enemy designer, enhancing my understanding of game mechanics. I am proficient in UE5, Maya, Blender, Substance 3D Painter, and Perforce. Focusing on gameplay innovation.
                 </p>
-                <p data-lang="zh" style="display: none;">
-                    大家好，我是游戏设计师杨。我一直在努力将创意和技术相结合，创作出既深刻又有趣的游戏。
-                </p>
+                <!-- 社交媒体按钮 -->
+                <div class="social-media">
+                    <a href="https://www.linkedin.com/in/lerically/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/yangliu_leric/" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
             </div>
-            <!-- 社交媒体按钮 -->
-            <div class="social-media">
-                <a href="https://www.linkedin.com/in/lerically/" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://www.instagram.com/yangliu_leric/" target="_blank" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
+        </div>
         </div>
     </section>
 
     <!-- 作品展示 -->
     <section id="portfolio" class="section">
-        <h2 data-lang="en">Portfolio</h2>
-        <h2 data-lang="zh" style="display: none;">作品展示</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item" onclick="window.open('./ShanHe.html')">
-                <img src="https://dl.dropboxusercontent.com/scl/fi/qmii6yali9qm5y2828xjq/ShanHe.png?rlkey=lrjdol1itcrkpfwav62wr1v7p&st=kpi3hoag" alt="Game Design">
-                <div class="portfolio-content">
-                    <h3 data-lang="en">ShanHe</h3>
-                    <h3 data-lang="zh" style="display: none;">山河</h3>
-                    <p data-lang="en">A Wuxia-style RPG game</p>
-                    <p data-lang="zh" style="display: none;">一款武侠风格的RPG游戏</p>
+        <div class="content-container">
+            <div class="portfolio-grid">
+                <div class="portfolio-header">
+                    <h3 class="typewriter-title">My Work<span class="highlight-text">|</span></h3>
+                    <p class="portfolio-description">Check out the games I have worked on!</p>
+                    <a href="#" class="view-portfolio-btn portfolio-nav"><i class="fas fa-eye"></i> View Portfolio</a>
                 </div>
-            </div>
-            <div class="portfolio-item" onclick="window.open('./AukOdessey.html')">
-                <img src="https://dl.dropboxusercontent.com/scl/fi/zp3cfnvdkgjaenza2kozk/356.png?rlkey=x03q5htcfbv6stu4hq0mz3i4w&st=r9hiyvog&dl=" alt="Photography">
-                <div class="portfolio-content">
-                    <h3 data-lang="en">Auk Odessey</h3>
-                    <h3 data-lang="zh" style="display: none;">奥德赛</h3>
-                    <p data-lang="en">Genetically engineered penguins escape with their lives</p>
-                    <p data-lang="zh" style="display: none;">基因改造企鹅死里逃生</p>
-                </div>
-            </div>
-            <div class="portfolio-item" onclick="window.open('./ComingSoon.html')">
-                <img src="https://dl.dropboxusercontent.com/scl/fi/kb7z69g0a4iitu7rzoud0/336.png?rlkey=mk6mvh59hhpxhg46vqe9dbz0j&st=f8mi7a3a" alt="UI Design">
-                <div class="portfolio-content">
-                    <h3 data-lang="en">UI Design</h3>
-                    <h3 data-lang="zh" style="display: none;">场景设计</h3>
-                    <p data-lang="en">Game Environment</p>
-                    <p data-lang="zh" style="display: none;">Game environment</p>
+                
+                <div class="portfolio-items">
+                    <!-- 项目1 -->
+                    <div class="portfolio-card" onclick="window.open('./ShanHe.html')" tabindex="0" role="button" aria-label="查看Project Downbelow项目详情">
+                        <div class="card-image">
+                            <img src="./assets/photo/405/Logo.png" alt="Project Downbelow" loading="lazy" width="320" height="200">
+                        </div>
+                        <div class="card-content">
+                            <h4>SHANHE</h4>
+                            <div class="software-icons">
+                                <div class="software-icon"><img src="./assets/photo/Icon/UELogo.png" alt="Unreal Engine 5"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/MayaLogo.png" alt="Autodesk Maya"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/PTLogo.png" alt="Substance 3D painter"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/PSLogo.png" alt="Adobe Photoshop"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/AILogo.png" alt="Adobe Illustrator"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/ProcreateLogo.png" alt="Procreate"></div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">RPG</span>
+                                <span class="project-tag">Wuxia</span>
+                                <span class="project-tag">3D</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 项目2 -->
+                    <div class="portfolio-card" onclick="window.open('./AukOdyssey.html')">
+                        <div class="card-image">
+                            <img src="./assets/photo/356/Title.png" alt="Vigor">
+                        </div>
+                        <div class="card-content">
+                            <h4>Auk Odessey</h4>
+                            <div class="software-icons">
+                                <div class="software-icon"><img src="./assets/photo/Icon/UELogo.png" alt="Unreal Engine 5"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/MayaLogo.png" alt="Autodesk Maya"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/PTLogo.png" alt="Substance 3D painter"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/PSLogo.png" alt="Adobe Photoshop"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/AILogo.png" alt="Adobe Illustrator"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/ProcreateLogo.png" alt="Procreate"></div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Adventure</span>
+                                <span class="project-tag">Puzzle</span>
+                                <span class="project-tag">UE5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 项目3 -->
+                    <div class="portfolio-card" onclick="window.open('https://bubono-bumperland.github.io/')">
+                        <div class="card-image">
+                            <img src="./assets/photo/475/Title.png" alt="Howl of Iron">
+                        </div>
+                        <div class="card-content">
+                            <h4>Bubono-Bumperland</h4>
+                            <div class="software-icons">
+                                <div class="software-icon"><img src="./assets/photo/Icon/UELogo.png" alt="Unreal Engine 5"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/MayaLogo.png" alt="Autodesk Maya"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/PTLogo.png" alt="Substance 3D painter"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/BlenderLogo.png" alt="Blender"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/ProcreateLogo.png" alt="Procreate"></div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Racing</span>
+                                <span class="project-tag">Action</span>
+                                <span class="project-tag">Physics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 项目4 -->
+                    <div class="portfolio-card" onclick="window.open('./coming-soon.html')">
+                        <div class="card-image">
+                            <img src="./assets/photo/Ink/Title.png" alt="Into the Cave">
+                        </div>
+                        <div class="card-content">
+                            <h4>INK</h4>
+                            <div class="software-icons">
+                                <div class="software-icon"><img src="./assets/photo/Icon/UELogo.png" alt="Unreal Engine 5"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/ProcreateLogo.png" alt="Procreate"></div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Adventure</span>
+                                <span class="project-tag">2D</span>
+                                <span class="project-tag">UE5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 项目5 -->
+                    <div class="portfolio-card" onclick="window.open('./coming-soon.html')">
+                        <div class="card-image">
+                            <img src="./assets/photo/E_Sheep/Title.png" alt="Ratchet & Clank UI Prototype">
+                        </div>
+                        <div class="card-content">
+                            <h4>E_Sheep</h4>
+                            <div class="software-icons">
+                                <div class="software-icon"><img src="./assets/photo/Icon/C4DLogo.png" alt="Figma"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/UELogo.png" alt="Pencil Ruler"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/MayaLogo.png" alt="Palette"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/BlenderLogo.png" alt="Blender"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/PTLogo.png" alt="Substance 3D painter"></div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Fashion Design</span>
+                                <span class="project-tag">UE5</span>
+                                <span class="project-tag">C4D</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 更多项目提示 -->
+                    <div class="portfolio-card more-card" onclick="window.open('./coming-soon.html')">
+                        <div class="more-content">
+                            <h4>... and more!</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 博客 -->
-    <section id="blog" class="section">
-        <h2 data-lang="en">Blog</h2>
-        <h2 data-lang="zh" style="display: none;">博客</h2>
-        <div class="blog-posts">
-          
-        </div>
-    </section>
+   
 
-    <!-- 页脚 -->
     <footer>
-        <p>&copy; 2023 Liu Yang. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>BEIJING, CHINA</span>
+                </div>
+                <div class="email-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>Lerically@163.com</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>LATEST PROJECTS</h3>
+                    <ul>
+                        <li><a href="https://bubono-bumperland.github.io/">BUBONO-BUMPERLAND</a></li>
+                        <li><a href="./coming-soon.html">INK</a></li>
+                        <li><a href="https://sites.google.com/d/1QKnyDd2Qq6rMUZv9yUS6erVlAeM-EDL-/p/1Pq3bVfn8ytE_36AvZwbjeHbTh89MWKZh/edit">SHANHE</a></li>
+                        <li><a href="./coming-soon.html">AUK ODESSEY</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>PORTFOLIO</h3>
+                    <ul>
+                        <li><a href="./coming-soon.html">UI/UX</a></li>
+                        <li><a href="./coming-soon.html">GAME</a></li>
+                        <li><a href="./coming-soon.html">OTHER</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>SOCIAL NETWORKS</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/channel/UCKyptFZH1upVQ0PEHnniKbA">YOUTUBE</a></li>
+                        <li><a href="www.linkedin.com/in/yangl04">LINKEDIN</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>GERLOGU</h3>
+                    <ul>
+                        <li><a href="#home">HOME</a></li>
+                        <li><a href="#portfolio">PORTFOLIO</a></li>
+                        <li><a href="#about">ABOUT ME</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yang Liu. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!-- 右下角切换按钮 -->
-    <div class="toggle-buttons">
-        <button id="language-toggle" title="Toggle Language">🌐</button>
-        <button id="mode-toggle" title="Toggle Mode">🌙</button>
-    </div>
-
-    <!-- 脚本 -->
-    <script>
-        // 语言切换功能
-        const languageToggle = document.getElementById('language-toggle');
-        const elements = document.querySelectorAll('[data-lang]');
-        let currentLang = 'en';
-
-        languageToggle.addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'zh' : 'en';
-            elements.forEach(element => {
-                if (element.getAttribute('data-lang') === currentLang) {
-                    element.style.display = 'block';
-                } else {
-                    element.style.display = 'none';
-                }
-            });
-            languageToggle.textContent = currentLang === 'en' ? '🌐' : '🌐';
-        });
-
-        // 模式切换功能
-        const modeToggle = document.getElementById('mode-toggle');
-        modeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            modeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
-            modeToggle.classList.toggle('active');
-        });
-
-        // 滚动到指定部分
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // 导航点高亮
-        const sections = document.querySelectorAll('.section');
-        const navDots = document.querySelectorAll('.nav-dot');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navDots.forEach(dot => {
-                dot.classList.remove('active');
-                if (dot.getAttribute('data-title').toLowerCase() === current) {
-                    dot.classList.add('active');
-                }
-            });
-        });
-
-        // 页面加载动画
-        window.addEventListener('load', () => {
-            sections.forEach(section => {
-                section.classList.add('visible');
-            });
-        });
-    </script>
+    <!-- 引入JavaScript文件 -->
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>

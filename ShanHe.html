@@ -1,804 +1,206 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShanHe - Standardized Showcase (Full Info with Lightbox)</title>
-  <!-- Font Awesome 图标库 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShanHe - Wuxia Style Third-Person RPG Game Project">
+    <meta name="keywords" content="Game Design, RPG, Wuxia, Unreal Engine">
+    <meta name="author" content="Yang">
+    <title>ShanHe Project - Yang's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/shanhe.css">
 
-  <style>
-    /* ======== 全局 & 暗亮模式 ======== */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      transition: background-color 0.3s ease, color 0.3s ease;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    :root {
-      --bg-color: #121212;
-      --text-color: #ffffff;
-      --link-color: #0077ff;
-      --footer-bg-color: #1a1a1a;
-    }
-    body.light-mode {
-      --bg-color: #ffffff;
-      --text-color: #121212;
-      --link-color: #0077cc;
-      --footer-bg-color: #e0e0e0;
-    }
-    a {
-      color: var(--link-color);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-
-    /* ======== Hero 视频背景 ======== */
-    .project-hero {
-      position: relative;
-      height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-      overflow: hidden;
-      text-align: center;
-    }
-    .project-hero video {
-      controls muted loop
-      ;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: cover;
-      opacity: 0.8;
-    }
-    .project-hero h1 {
-      position: relative;
-      z-index: 2;
-      font-size: 48px;
-      color: #fff;
-      font-weight: 600;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      max-width: 800px;
-      padding: 0 20px;
-      animation: fadeIn 2s ease-in-out;
-    }
-    .project-hero::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%; 
-      height: 200px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--bg-color) 100%);
-      z-index: 1;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* ======== 主体内容排版 ======== */
-    .project-content {
-      max-width: 1000px;
-      margin: 80px auto;
-      padding: 0 20px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .project-content.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .project-content h2,
-    .project-content h3 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .project-content p,
-    .project-content ul,
-    .project-content li {
-      text-align: left;
-      line-height: 1.8;
-    }
-    .section-block {
-      margin-bottom: 60px;
-    }
-    .section-block ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .section-block li {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 8px;
-    }
-    .section-block li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--link-color);
-      font-weight: bold;
-    }
-
-    /* ======= 特色功能展示结构 ======= */
-    .feature-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-    .feature-text {
-      flex: 1 1 300px;
-    }
-    .feature-media {
-      flex: 0 0 400px;
-      max-width: 100%;
-    }
-    .feature-media img,
-    .feature-media video {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-    .feature-media img:hover,
-    .feature-media video:hover {
-      transform: scale(1.02);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    }
-
-    .extra-screenshots {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .extra-screenshots img {
-      max-width: 45%;
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .extra-screenshots img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    }
-
-    /* 附加素材：其他图片/视频 */
-    .extra-media img,
-    .extra-media video {
-      display: block;
-      margin: 20px auto;
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .extra-media img:hover,
-    .extra-media video:hover {
-      transform: scale(1.02);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    }
-
-    /* ======= Lightbox 样式 ======= */
-    .lightbox {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    .lightbox.active {
-      display: flex;
-      animation: fadeInModal 0.3s ease forwards;
-    }
-    @keyframes fadeInModal {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    .lightbox-content {
-      position: relative;
-      max-width: 90%;
-      max-height: 90%;
-    }
-    .lightbox-content img,
-    .lightbox-content video {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 90vh;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px; right: 30px;
-      font-size: 32px;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-    .lightbox-close:hover {
-      color: #ff5050;
-      transform: scale(1.1);
-    }
-
-    /* ======== 页脚 ======== */
-    footer {
-      background-color: var(--footer-bg-color);
-      color: var(--text-color);
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* ======== 右下角功能按钮 ======== */
-    .toggle-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .toggle-buttons button {
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 18px;
-      outline: none;
-    }
-    .toggle-buttons button:hover {
-      opacity: 0.8;
-    }
-    #language-toggle {
-      background-color: #444;
-      color: #fff;
-    }
-    #mode-toggle {
-      background-color: #777;
-      color: #fff;
-    }
-
-    /* ======== 响应式 ======== */
-    @media (max-width: 768px) {
-      .project-hero h1 {
-        font-size: 32px;
-      }
-      .project-content {
-        margin: 40px auto;
-        padding: 0 10px;
-      }
-      .project-content h2 {
-        font-size: 26px;
-      }
-      .section-block h3 {
-        font-size: 20px;
-      }
-      .feature-container {
-        flex-direction: column;
-      }
-      .feature-media {
-        flex: none;
-        width: 100%;
-      }
-      .extra-screenshots {
-        flex-direction: column;
-      }
-    }
-
-    /* ========== 创意返回主页按钮（传送门风格） ========== */
-    .portal-button {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      width: 70px;
-      height: 70px;
-      border: none;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #ffdd00, #ff9900);
-      color: #fff;
-      font-size: 28px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      z-index: 10000;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-    .portal-button:hover {
-      transform: scale(1.1);
-    }
-    .portal-button.active {
-      animation: portalActivate 0.8s forwards;
-    }
-    @keyframes portalActivate {
-      0% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.5) rotate(180deg);
-        opacity: 0.8;
-      }
-      100% {
-        transform: scale(0) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
+    <link rel="preconnect" href="https://www.youtube.com/embed/7Lbgw9pMwPo?autoplay=1&mute=1&loop=1&playlist=7Lbgw9pMwPo&controls=0">
+    <link rel="preconnect" href="https://www.youtube.com/embed/I1ZnAsrXzbM?autoplay=0&controls=1">
+    <link rel="preconnect" href="https://www.youtube.com/embed/AhiOhE_B5ic?autoplay=0&controls=1">
 </head>
 <body>
-  <!-- ========== Hero ========== -->
-  <section class="project-hero">
-    <!-- 注意：移除 autoplay 属性，视频不会自动播放 -->
-    <video controls muted loop>
-      <source src="https://dl.dropboxusercontent.com/scl/fi/ofwsfeouuom9osg7l7jfn/BG.mp4?rlkey=w31m7obtd0vckglthytlksakw&st=t2j9mzpw" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <!-- 英文标题 -->
-    <h1 data-lang="en">ShanHe - A Wuxia-style RPG Game</h1>
-    <!-- 中文标题 -->
-    <h1 data-lang="zh" style="display: none;">山河 - 一款武侠风格的RPG游戏</h1>
-  </section>
-
-  <!-- ========== 主体内容 ========== -->
-  <section class="project-content">
-    <!-- 项目概述 -->
-    <h2 data-lang="en">Project Overview</h2>
-    <h2 data-lang="zh" style="display: none;">项目概述</h2>
-    <div class="section-block">
-      <p data-lang="en">
-        ShanHe is a Wuxia-inspired ARPG prototype developed within 10 weeks using Unreal Engine 5.3 Blueprints.
-        The game merges MMORPG elements with martial arts action reminiscent of “Sifu,” creating an immersive
-        ancient Chinese setting that offers dynamic combat and questing experiences.
-      </p>
-      <p data-lang="zh" style="display: none;">
-        《山河》是一款在 10 周内通过 Unreal Engine 5.3 蓝图开发的武侠风 ARPG 原型游戏。
-        它融合了 MMORPG 的要素和类似《Sifu》的武术动作玩法，致力于在古代中国的世界观下，带来流畅的战斗与任务体验。
-      </p>
-    </div>
-
-    <!-- 开发信息 & 主要特色 -->
-    <div class="section-block">
-      <h3 data-lang="en">Development Info & Highlights</h3>
-      <h3 data-lang="zh" style="display: none;">开发信息 & 主要特色</h3>
-      <ul data-lang="en">
-        <li>Development Cycle: 10 Weeks (Solo Project)</li>
-        <li>Engine: Unreal Engine 5.3</li>
-        <li>Tools: Autodesk Maya, Substance 3D Painter</li>
-        <li>Key Features: Execution System, Lock-On, Weapon Wheel, Mission, Multiple ATK Combos, Attack Feedback</li>
-      </ul>
-      <ul data-lang="zh" style="display: none;">
-        <li>开发周期：10 周（个人项目）</li>
-        <li>引擎：Unreal Engine 5.3</li>
-        <li>使用工具：Autodesk Maya、Substance 3D Painter</li>
-        <li>核心功能：处决系统、锁定、武器轮盘、任务、多段连招、打击反馈</li>
-      </ul>
-    </div>
-
-    <!-- ========== 核心功能 (Key Features) ========== -->
-    <h2 data-lang="en">Key Features</h2>
-    <h2 data-lang="zh" style="display: none;">核心功能</h2>
-
-    <!-- 特性 1: Execution System -->
-    <div class="section-block">
-      <h3 data-lang="en">1) Execution System</h3>
-      <h3 data-lang="zh" style="display: none;">1）处决系统</h3>
-
-      <div class="feature-container">
-        <div class="feature-text">
-          <p data-lang="en">
-            When an enemy’s HP reaches zero, a QTE event is triggered with bullet time and a random finishing animation.
-            Both player and enemy are locked from movement, enhancing the cinematic final blow.
-          </p>
-          <p data-lang="zh" style="display: none;">
-            当敌人的血量归零时会触发 QTE、子弹时间和随机终结动画。玩家与敌人均被锁定，提升终结一击的电影感。
-          </p>
-          <ul data-lang="en">
-            <li>Random finishing animations (1–4)</li>
-            <li>Bullet time & QTE prompt</li>
-            <li>Locks movement & input</li>
-          </ul>
-          <ul data-lang="zh" style="display: none;">
-            <li>随机处决动画（1~4）</li>
-            <li>子弹时间与 QTE 提示</li>
-            <li>禁用移动与输入</li>
-          </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="./index.html" class="logo" aria-label="Home">
+                    <img src="./assets/photo/Icon/MyLogo.png" alt="Logo" class="logo-img">
+                    <span>Yang</span>
+                </a>
+            </div>
+            <div class="nav-links" role="menubar" aria-label="主菜单">
+                <a href="./index.html" class="nav-link" data-section="home" role="menuitem" tabindex="0">Home</a>
+                <a href="./index.html#skills" class="nav-link" data-section="skills" role="menuitem" tabindex="0">Skills</a>
+                <a href="./index.html#about" class="nav-link" data-section="about" role="menuitem" tabindex="0">About</a>
+                <a href="./index.html#portfolio" class="nav-link" data-section="portfolio" role="menuitem" tabindex="0">Portfolio</a>
+            </div>
+            <div class="nav-controls">
+                <a href="./assets/file/Resume_Yang.pdf" class="nav-link" role="menuitem" tabindex="0">Download CV</a>
+            </div>
         </div>
-        <div class="feature-media">
-          <video controls muted loop>
-            <source src="https://dl.dropboxusercontent.com/scl/fi/zfk5bgnf8kpbx4iwmfh42/Execute_1.mp4?rlkey=ttecpnpw21o967scdczi12zvf&st=fck81unb" type="video/mp4">
-          </video>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7Lbgw9pMwPo?autoplay=1&mute=1&loop=1&playlist=7Lbgw9pMwPo&controls=0&disablekb=1&playsinline=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></iframe>
+        <div class="project-hero-content">
+            <h1>ShanHe</h1>
+            <p>Wuxia Style Third-Person RPG</p>
+            <a href="https://sites.google.com/view/itgm-405-liuyang/sprint-1" class="learn-more-btn" target="_blank">Learn More</a>
         </div>
-      </div>
+    </section>
 
-      <div class="extra-media">
-        <video controls muted loop>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/wuyt7i4e9zjv9kdu6myx5/Execute_2.mp4?rlkey=x6b8pfwaqn7j82s6g5wyskl12&st=8ivyr4dq" type="video/mp4">
-        </video>
-        <img src="https://dl.dropboxusercontent.com/scl/fi/lu90oj5t54aw0fi92s3sa/Execute_1.png?rlkey=suhus82j39m99tle2yiv2rlhe&st=am2j2td5" alt="Execute_1 Blueprint">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/ht9ptfb14xnk4h8mo4yla/Execute_2.png?rlkey=srpd6sxo54u2r5u2ui7gun2yj&st=gec0gdr1" alt="Execute_2 Blueprint">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/6wlasuqs3enys3nlr0kfh/Execute_3.png?rlkey=fr7ia7h9xoxaq9o5v611slhea&st=x9vj77rx" alt="Execute_3 Blueprint">
-      </div>
-    </div>
-
-    <!-- 特性 2: Lock-On System -->
-    <div class="section-block">
-      <h3 data-lang="en">2) Lock-On System</h3>
-      <h3 data-lang="zh" style="display: none;">2）锁定系统</h3>
-
-      <div class="feature-container">
-        <div class="feature-text">
-          <p data-lang="en">
-            A single button allows players to lock onto the closest enemy in view.
-            Cosine angle checks enable flick-based target switching among nearby foes,
-            ensuring fluid multi-target engagement.
-          </p>
-          <p data-lang="zh" style="display: none;">
-            玩家可通过单一按键锁定视野内最近的敌人，同时利用余弦角检测在附近目标间快速切换，
-            提供流畅的多目标战斗体验。
-          </p>
-          <ul data-lang="en">
-            <li>One-button lock-on</li>
-            <li>Cosine angle for target switching</li>
-            <li>Maintains camera focus</li>
-          </ul>
-          <ul data-lang="zh" style="display: none;">
-            <li>一键锁定目标</li>
-            <li>余弦角检测切换</li>
-            <li>持续摄像机聚焦</li>
-          </ul>
+    <!-- Project Overview -->
+    <section class="project-overview" id="project-overview">
+        <div class="content-container">
+            <h2>Project Overview</h2>
+            <div class="project-info">
+                <div class="info-card">
+                    <h3>Development Cycle</h3>
+                    <p>10 weeks (Solo Project)</p>
+                </div>
+                <div class="info-card">
+                    <h3>Development Tools</h3>
+                    <p>Unreal Engine 5.3</p>
+                    <p>Autodesk Maya</p>
+                    <p>Substance 3D Painter</p>
+                </div>
+                <div class="info-card">
+                    <h3>Main References</h3>
+                    <p>Asian Canal Environment + ULAT</p>
+                    <p>LanFang Character</p>
+                    <p>Unreal Marketplace Animations</p>
+                </div>
+            </div>
         </div>
-        <div class="feature-media">
-          <video controls muted loop>
-            <source src="https://dl.dropboxusercontent.com/scl/fi/u51b47vxrzxsw6jl1kkxc/LockOn_1.mp4?rlkey=cg4s2dvcj5vo0h5ingj1m1grk&st=eewali71" type="video/mp4">
-          </video>
+    </section>
+
+    <!-- Core Features -->
+    <section class="features">
+        <div class="content-container">
+            <h2>Core Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Execution System</h3>
+                    <p>When an enemy's health is low enough to be killed, they enter an executable state, triggering a QTE mechanism. The system automatically controls camera lock, character movement, and animation playback, providing a smooth execution experience.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Lock-On System</h3>
+                    <p>Target locking is achieved through linear detection, supporting smooth switching between multiple targets. The camera intelligently tracks targets, providing a precise combat experience.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Mission System</h3>
+                    <p>A data-driven mission system that supports various mission types including collection, elimination, and location-based objectives. Features a complete mission panel, tracking, dialogue, and navigation functionality.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Weapon Wheel System</h3>
+                    <p>A circular weapon selection menu implemented with custom Widgets, using material nodes to create interactive highlighting effects, providing an intuitive weapon switching experience.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Combo System</h3>
+                    <p>A structured combo management system supporting light and heavy attack combinations. Smooth combo transitions are achieved through time window judgments, with each weapon having a unique combo table.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Hit Feedback System</h3>
+                    <p>Integrates frame freezing, camera shake, hit effects, and impact animations to create a clear and powerful hit sensation.</p>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="extra-media">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/r0tv9wks4ijhue0aurt9x/LockOn_1.png?rlkey=fu5dup20bqsw1uwwjj64syfq7&st=1tp1czgc" alt="LockOn_1">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/i2azk75fcyr0u5dzf59z5/LockOn_2.png?rlkey=seyhtny5veermvyx1nwcfxzkx&st=4exd29pq" alt="LockOn_2">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/udqt6e2kn8z6mg6r6umhs/LockOn_3.png?rlkey=oycb06zixefxwdl59vdh828j1&st=p1r58vzz" alt="LockOn_3">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/bf653igkhz01ega47pg0a/LockOn_4.png?rlkey=jfmtlrep497mr1jjshwxw0oko&st=f5r5x5y3" alt="LockOn_4">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/gjs1bdl77i5wkj3ax4aps/LockOn_5.png?rlkey=t3xunba8syoyjgblgkl4fz8aj&st=kjy34hkh" alt="LockOn_5">
-      </div>
-    </div>
-
-    <!-- 特性 3: Mission System -->
-    <div class="section-block">
-      <h3 data-lang="en">3) Mission System</h3>
-      <h3 data-lang="zh" style="display: none;">3）任务系统</h3>
-
-      <div class="feature-container">
-        <div class="feature-text">
-          <p data-lang="en">
-            Missions are defined via data tables with unique NPC IDs for quest-giving and submission.
-            The system supports multiple mission types—Collect, Eliminate, Arrive—and features a real-time tracking panel.
-          </p>
-          <p data-lang="zh" style="display: none;">
-            任务通过数据表配置，并使用NPC唯一ID来区分任务的接收与提交。系统支持收集、击杀、到达等多种任务类型，
-            并提供实时追踪面板，方便玩家同时管理多任务。
-          </p>
-          <ul data-lang="en">
-            <li>Data Table-based configuration</li>
-            <li>Multiple mission types</li>
-            <li>Real-time tracking panel</li>
-          </ul>
-          <ul data-lang="zh" style="display: none;">
-            <li>数据表管理任务配置</li>
-            <li>多种任务类型</li>
-            <li>实时任务追踪</li>
-          </ul>
+    <!-- Media Showcase -->
+    <section class="media-showcase">
+        <div class="content-container">
+            <h2>Game Showcase</h2>
+            <div class="media-gallery">
+                <div class="media-item">
+                    <img src="./assets/photo/405/Execute_1.png" alt="Execution System Showcase">
+                </div>
+                <div class="media-item">
+                    <img src="./assets/photo/405/Execute_2.png" alt="Combat System Showcase">
+                </div>
+                <div class="media-item">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/I1ZnAsrXzbM?autoplay=0&controls=0&disablekb=1&playsinline=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="pointer-events: none;"></iframe>
+                </div>
+                <div class="media-item">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/AhiOhE_B5ic?autoplay=0&controls=0&disablekb=1&playsinline=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="pointer-events: none;"></iframe>
+                </div>
+            </div>
         </div>
-        <div class="feature-media">
-          <video controls muted loop>
-            <source src="https://dl.dropboxusercontent.com/scl/fi/c5nhjy4gnpm9x760ie4qt/Task-panel.mp4?rlkey=nl8j0wfvxe0niepkpj29wa9pq&st=xmtf3sd0" type="video/mp4">
-          </video>
+    </section>
+
+    <!-- Development Highlights -->
+    <section class="highlights">
+        <div class="content-container">
+            <h2>Development Highlights</h2>
+            <div class="highlight-list">
+                <div class="highlight-item">
+                    <h3>Data-Driven Approach</h3>
+                    <p>Extensive use of data tables and structures to achieve flexible configuration of missions, combos, and weapon systems.</p>
+                </div>
+                <div class="highlight-item">
+                    <h3>Animation & Blueprint Integration</h3>
+                    <p>Skillful use of Animation Montage, Motion Warping, Root Motion, and other techniques to create a fluid character action system.</p>
+                </div>
+                <div class="highlight-item">
+                    <h3>User Experience</h3>
+                    <p>Carefully designed interaction details from weapon wheel material interactions to mission panel status updates.</p>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="extra-media">
-        <video controls muted loop>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/phwri043ia0zaifxb0agz/Task-Reciver.mp4?rlkey=tbwg2lahabe0p0qf6uw1ld687&st=wy1ussne" type="video/mp4">
-        </video>
-        <video controls muted loop>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/47ju7s0kr5tfw2xbdz4mi/Task-Reward.mp4?rlkey=wtaonr6anxxis7jzfk61s6485&st=tvcar5zz" type="video/mp4">
-        </video>
-        <video controls muted loop>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/ow0uvvzyififj8qrmf9tg/Task-Tracing.mp4?rlkey=9wvzandihj30r5dvx46xv7bpq&st=vkk7y21c" type="video/mp4">
-        </video>
-        <img src="https://dl.dropboxusercontent.com/scl/fi/opaia3y5eksb9e3w8qndk/Task.png?rlkey=nk6736jdzll5nq89qhagfu631&st=g4cbeei8" alt="Task Blueprint">
-      </div>
-    </div>
-
-    <!-- 特性 4: Weapon Wheel System -->
-    <div class="section-block">
-      <h3 data-lang="en">4) Weapon Wheel System</h3>
-      <h3 data-lang="zh" style="display: none;">4）武器轮盘</h3>
-
-      <div class="feature-container">
-        <div class="feature-text">
-          <p data-lang="en">
-            A radial menu widget for fast weapon switching. Radial gradient materials and angle-based highlighting
-            make each segment visually clear, allowing seamless real-time weapon selection.
-          </p>
-          <p data-lang="zh" style="display: none;">
-            通过圆形菜单Widget实现快速切换武器。环形渐变材质与角度计算带来直观的高亮效果，
-            实现实时流畅的武器选择。
-          </p>
-          <ul data-lang="en">
-            <li>Radial gradient materials</li>
-            <li>Angle-based segment highlight</li>
-            <li>Real-time switching</li>
-          </ul>
-          <ul data-lang="zh" style="display: none;">
-            <li>环形渐变材质</li>
-            <li>基于角度的扇区高亮</li>
-            <li>实时切换</li>
-          </ul>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>BEIJING, CHINA</span>
+                </div>
+                <div class="email-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>Lerically@163.com</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>LATEST PROJECTS</h3>
+                    <ul>
+                        <li><a href="https://bubono-bumperland.github.io/">BUBONO-BUMPERLAND</a></li>
+                        <li><a href="./coming-soon.html">INK</a></li>
+                        <li><a href="https://sites.google.com/d/1QKnyDd2Qq6rMUZv9yUS6erVlAeM-EDL-/p/1Pq3bVfn8ytE_36AvZwbjeHbTh89MWKZh/edit">SHANHE</a></li>
+                        <li><a href="./coming-soon.html">AUK ODESSEY</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>PORTFOLIO</h3>
+                    <ul>
+                        <li><a href="./coming-soon.html">UI/UX</a></li>
+                        <li><a href="./coming-soon.html">GAME</a></li>
+                        <li><a href="./coming-soon.html">OTHER</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>SOCIAL NETWORKS</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/channel/UCKyptFZH1upVQ0PEHnniKbA">YOUTUBE</a></li>
+                        <li><a href="www.linkedin.com/in/yangl04">LINKEDIN</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>GERLOGU</h3>
+                    <ul>
+                        <li><a href="./index.html#Home">HOME</a></li>
+                        <li><a href="./index.html#portfolio">PORTFOLIO</a></li>
+                        <li><a href="./index.html#about">ABOUT ME</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="feature-media">
-          <video controls muted loop>
-            <source src="https://dl.dropboxusercontent.com/scl/fi/o1orzd9hbjdyhykfr0vko/WeaponWheel.mp4?rlkey=5mcpy40vdujr2r3dcfa9de9wb&st=20q61cvh" type="video/mp4">
-          </video>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yang Liu. All rights reserved.</p>
         </div>
-      </div>
+    </footer>
 
-      <div class="extra-media">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/5qxkou1hqh99wm4s2xmek/WW_1.png?rlkey=idig5fyav8wqqziikwxuvw0eu&st=nanuso5v" alt="WW_1 Material">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/fktsle9spu6ustc1fxsr1/WW_2.png?rlkey=6vgpgt1d7j52rbh9hdgg23ydg&st=rkfmn8dt" alt="WW_2 Blueprint">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/t73r30hozufq3o5028xvn/WW_3.png?rlkey=jmcrdmoetyylch2dildrbed1i&st=yzzhzgeh" alt="WW_3 Material">
-      </div>
-    </div>
-
-    <!-- 特性 5: Multiple ATK Combo System -->
-    <div class="section-block">
-      <h3 data-lang="en">5) Multiple ATK Combo System</h3>
-      <h3 data-lang="zh" style="display: none;">5）多段连招系统</h3>
-
-      <div class="feature-container">
-        <div class="feature-text">
-          <p data-lang="en">
-            Each weapon’s Light/Heavy attacks are defined in data tables.
-            Anim Notifies handle input timing windows, allowing seamless branching combos if the correct sequence is pressed.
-          </p>
-          <p data-lang="zh" style="display: none;">
-            每种武器的轻/重攻击均在数据表中定义，动画通知控制输入时机，
-            正确指令即可触发流畅的连招分支。
-          </p>
-          <ul data-lang="en">
-            <li>Data Table-based combo trees</li>
-            <li>Anim Notifies for timing</li>
-            <li>Light/Heavy branching combos</li>
-          </ul>
-          <ul data-lang="zh" style="display: none;">
-            <li>数据表管理连招树</li>
-            <li>动画通知控制输入时机</li>
-            <li>轻/重攻击分支连招</li>
-          </ul>
-        </div>
-        <div class="feature-media">
-          <video controls muted loop>
-            <source src="https://dl.dropboxusercontent.com/scl/fi/ye71zfazuelazo131h80f/Combo_1.mp4?rlkey=bvezrkq0xy7j5osa0ziuwnba1&st=giiizz1u" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <div class="extra-media">
-        <video controls muted loop>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/0rhy2nlcibgn1wqx9afzc/Combo_2.mp4?rlkey=z783iz9o6xz2dkk2way1vpo05&st=qcm7r30h" type="video/mp4">
-        </video>
-        <img src="https://dl.dropboxusercontent.com/scl/fi/x0md50q45uxpdzrd0sezy/Combo_Blueprint.png?rlkey=ub2ikkkeb7q1c9d4ywgmh5sbr&st=EqQ6SGSh" alt="Combo Blueprint Example">
-      </div>
-    </div>
-
-    <!-- 特性 6: Attack Feedback System -->
-    <div class="section-block">
-      <h3 data-lang="en">6) Attack Feedback System</h3>
-      <h3 data-lang="zh" style="display: none;">6）打击反馈系统</h3>
-
-      <div class="feature-container">
-        <div class="feature-text">
-          <p data-lang="en">
-            Short frame stops (“hit stops”), camera shake, and precise VFX at the collision point
-            amplify the impact of each attack. Enemies feature prioritized “hit reaction” montages for clear feedback.
-          </p>
-          <p data-lang="zh" style="display: none;">
-            通过帧停、摄像机震动以及在碰撞点生成精准特效来增强每次攻击的打击感。敌人采用高优先级的受击蒙太奇，
-            确保反馈清晰及时。
-          </p>
-          <ul data-lang="en">
-            <li>Short hit-stop effect</li>
-            <li>Camera shake on heavy hits</li>
-            <li>Precise VFX at collision point</li>
-          </ul>
-          <ul data-lang="zh" style="display: none;">
-            <li>短暂的帧停效果</li>
-            <li>重击时摄像机震动</li>
-            <li>精准生成特效</li>
-          </ul>
-        </div>
-        <div class="feature-media">
-          <img src="https://dl.dropboxusercontent.com/scl/fi/8nfxhcyb9cstbf1tjfxjm/AF_Overall.png?rlkey=n4qiguhwyrc87dg3vxsghrft6&st=epbb6bji" alt="Attack Feedback Blueprint">
-        </div>
-      </div>
-
-      <div class="extra-media">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/zenebexk4jwehv4jvwssp/AF_Camera.png?rlkey=47tg7e7n5h232dele2qvi4h06&st=y1kicyjd" alt="AF_Camera">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/5ed5e2v75r06zgydlbxuq/AF_FPS.png?rlkey=drhmm0av7omq6fal4rorxktp5&st=zof6qiuu" alt="AF_FPS">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/i3qk33ryedt4t8ol06bfm/AF_VFX.png?rlkey=6ao5566ucmrb4adpfaw7dlt8o&st=17krmlsg" alt="AF_VFX">
-      </div>
-    </div>
-
-    <!-- 系统实现 & 难点 -->
-    <h2 data-lang="en">System Implementation & Challenges</h2>
-    <h2 data-lang="zh" style="display: none;">系统实现 & 主要难点</h2>
-    <div class="section-block">
-      <p data-lang="en">
-        ShanHe uses a data-driven approach (DataTables, Structs, Enums) with Anim Montages for advanced combat.
-        Key challenges included precise alignment during finishing moves (solved via Motion Warping)
-        and multi-combo timing windows (handled by Anim Notifies).
-      </p>
-      <p data-lang="zh" style="display: none;">
-        《山河》采用数据表、结构体和枚举等数据驱动方式，并结合动画蒙太奇实现高级战斗效果。
-        主要难点在于处决动作的精确对位（通过 Motion Warping 解决）以及多段连招时机管理（由动画通知控制）。
-      </p>
-    </div>
-
-    <!-- 结论与展望 -->
-    <h2 data-lang="en">Conclusion & Future Plans</h2>
-    <h2 data-lang="zh" style="display: none;">总结 & 未来展望</h2>
-    <div class="section-block">
-      <p data-lang="en">
-        By focusing on fluid combat and system-driven design, ShanHe demonstrates the efficiency of Blueprint prototyping.
-        Future improvements include online multiplayer, additional weapon types, and expanded story-driven missions.
-      </p>
-      <p data-lang="zh" style="display: none;">
-        《山河》通过专注于流畅的战斗与系统化设计，展示了蓝图原型制作的高效性。
-        未来计划加入网络联机、更多武器类型以及更丰富的剧情任务等内容。
-      </p>
-    </div>
-
-    <!-- Extra Screenshots 部分：两张图左右排列 -->
-    <h2 data-lang="en">Extra Screenshots</h2>
-    <h2 data-lang="zh" style="display: none;">更多游戏截图</h2>
-    <div class="extra-screenshots">
-      <img src="https://dl.dropboxusercontent.com/scl/fi/qmii6yali9qm5y2828xjq/ShanHe.png?rlkey=lrjdol1itcrkpfwav62wr1v7p&st=kpi3hoag" alt="ShanHe Screenshot 1">
-      <img src="https://dl.dropboxusercontent.com/scl/fi/zp3cfnvdkgjaenza2kozk/356.png?rlkey=x03q5htcfbv6stu4hq0mz3i4w&st=r9hiyvog" alt="ShanHe Screenshot 2">
-    </div>
-  </section>
-
-  <!-- ======== 页脚 ======== -->
-  <footer>
-    <p>&copy; 2023 Liu Yang. All rights reserved.</p>
-  </footer>
-
-  <!-- ======== 右下角功能按钮 ======== -->
-  <div class="toggle-buttons">
-    <button id="language-toggle" title="Toggle Language">🌐</button>
-    <button id="mode-toggle" title="Toggle Mode">🌙</button>
-  </div>
-
-  <!-- ======== 创意返回主页按钮（传送门风格） ======== -->
-  <button class="portal-button" onclick="activatePortal()" title="返回主页">
-    <i class="fas fa-home"></i>
-  </button>
-
-  <!-- ======== Lightbox 弹窗 ======== -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-content" id="lightboxContent">
-      <!-- 动态插入图片或视频 -->
-    </div>
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-  </div>
-
-  <script>
-    // 语言切换（若需要全部显示所有语言，可删除相关代码）
-    const languageToggle = document.getElementById("language-toggle");
-    const elements = document.querySelectorAll("[data-lang]");
-    let currentLang = "en";
-    languageToggle.addEventListener("click", () => {
-      currentLang = currentLang === "en" ? "zh" : "en";
-      elements.forEach((el) => {
-        el.style.display = el.getAttribute("data-lang") === currentLang ? "block" : "none";
-      });
-      languageToggle.textContent = currentLang === "en" ? "🌐" : "🌐";
-    });
-
-    // 暗/亮模式切换
-    const modeToggle = document.getElementById("mode-toggle");
-    modeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
-      modeToggle.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
-    });
-
-    // 页面加载时淡入内容，并为所有媒体添加点击事件以打开 Lightbox 预览
-    window.addEventListener("load", () => {
-      document.querySelector(".project-content").classList.add("visible");
-
-      // 为 .project-content 内所有图片、视频、.extra-screenshots 和 .extra-media 的媒体添加点击事件
-      const mediaItems = document.querySelectorAll(
-        ".project-content img, .project-content video, .extra-screenshots img, .extra-media img, .extra-media video"
-      );
-      mediaItems.forEach(item => {
-        item.style.cursor = "pointer";
-        item.addEventListener("click", () => {
-          let type = item.tagName.toLowerCase() === "video" ? "video" : "img";
-          let src = type === "video" ? (item.currentSrc || item.src) : item.src;
-          openLightbox(type, src);
-        });
-      });
-    });
-
-    // Lightbox 打开函数
-    function openLightbox(type, src) {
-      const lightbox = document.getElementById("lightbox");
-      const lightboxContent = document.getElementById("lightboxContent");
-      lightboxContent.innerHTML = ""; // 清空之前内容
-
-      if (type === "img") {
-        const img = document.createElement("img");
-        img.src = src;
-        lightboxContent.appendChild(img);
-      } else if (type === "video") {
-        const video = document.createElement("video");
-        video.src = src;
-        video.controls = true;
-        lightboxContent.appendChild(video);
-      }
-      lightbox.classList.add("active");
-    }
-
-    // Lightbox 关闭函数
-    function closeLightbox() {
-      const lightbox = document.getElementById("lightbox");
-      const lightboxContent = document.getElementById("lightboxContent");
-      lightbox.classList.remove("active");
-      lightboxContent.innerHTML = "";
-    }
-
-    // 点击 Lightbox 背景区域也可关闭
-    document.getElementById("lightbox").addEventListener("click", (e) => {
-      if (e.target === document.getElementById("lightbox")) {
-        closeLightbox();
-      }
-    });
-
-    // 创意返回主页按钮：传送门风格
-    function activatePortal() {
-      const btn = document.querySelector('.portal-button');
-      btn.classList.add('active');
-      setTimeout(() => {
-        window.location.href = "index.html"; // 修改为主页链接
-      }, 800);
-    }
-  </script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/mobile-nav.js" defer></script>
 </body>
 </html>

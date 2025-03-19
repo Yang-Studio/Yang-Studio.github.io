@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coming Soon - Yang's Portfolio">
+    <meta name="keywords" content="Game Design, Photography, UI Design, Portfolio, Coming Soon">
+    <meta name="author" content="Yang">
+    <title>Coming Soon - Yang's Portfolio</title>
+    <!-- Font Awesome Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Preload Key Resources - Optimize Loading Strategy -->
+    <link rel="preload" href="./assets/photo/Yang.jpg" as="image">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/coming-soon.css">
+    <!-- JavaScript Files -->
+    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/countdown.js" defer></script>
+    <script src="./assets/js/mobile-nav.js" defer></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="./index.html" class="logo" aria-label="Home">
+                    <img src="./assets/photo/Icon/MyLogo.png" alt="Logo" class="logo-img">
+                    <span>Yang</span>
+                </a>
+            </div>
+            <div class="nav-links" role="menubar" aria-label="主菜单">
+                <a href="./index.html" class="nav-link" data-section="home" role="menuitem" tabindex="0">Home</a>
+                <a href="./index.html#skills" class="nav-link" data-section="skills" role="menuitem" tabindex="0">Skills</a>
+                <a href="./index.html#about" class="nav-link" data-section="about" role="menuitem" tabindex="0">About</a>
+                <a href="./index.html#portfolio" class="nav-link" data-section="portfolio" role="menuitem" tabindex="0">Portfolio</a>
+            </div>
+            <div class="nav-controls">
+                <a href="./assets/file/Resume_Yang.pdf" class="nav-link" role="menuitem" tabindex="0">Download CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Coming Soon Hero Section -->
+    <section class="coming-soon-hero">
+        <div class="coming-soon-overlay"></div>
+        <div class="coming-soon-content">
+            <h1>Coming Soon</h1>
+            <p>We are creating an amazing new project</p>
+            
+            <!-- Countdown Component -->
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            
+            <!-- Project Teaser -->
+            <div class="project-teaser">
+                <p>Stay tuned for our brand new game project</p>
+                <div class="teaser-features">
+                    <div class="teaser-feature">
+                        <i class="fas fa-gamepad"></i>
+                        <span>Innovative Gameplay</span>
+                    </div>
+                    <div class="teaser-feature">
+                        <i class="fas fa-mountain"></i>
+                        <span>Stunning Environments</span>
+                    </div>
+                    <div class="teaser-feature">
+                        <i class="fas fa-users"></i>
+                        <span>Rich Characters</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subscribe Form -->
+            <div class="subscribe-container">
+                <h2>Get the Latest Updates</h2>
+                <p>Subscribe to our newsletter to receive project updates and release information first</p>
+                <form class="subscribe-form" id="subscribeForm">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your email address" required>
+                        <button type="submit" class="subscribe-btn">Subscribe</button>
+                    </div>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+            
+            <!-- Social Media Links -->
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>BEIJING, CHINA</span>
+                </div>
+                <div class="email-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>Lerically@163.com</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>LATEST PROJECTS</h3>
+                    <ul>
+                        <li><a href="https://bubono-bumperland.github.io/">BUBONO-BUMPERLAND</a></li>
+                        <li><a href="./coming-soon.html">INK</a></li>
+                        <li><a href="https://sites.google.com/d/1QKnyDd2Qq6rMUZv9yUS6erVlAeM-EDL-/p/1Pq3bVfn8ytE_36AvZwbjeHbTh89MWKZh/edit">SHANHE</a></li>
+                        <li><a href="./coming-soon.html">AUK ODESSEY</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>PORTFOLIO</h3>
+                    <ul>
+                        <li><a href="./coming-soon.html">UI/UX</a></li>
+                        <li><a href="./coming-soon.html">GAME</a></li>
+                        <li><a href="./coming-soon.html">OTHER</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>SOCIAL NETWORKS</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/channel/UCKyptFZH1upVQ0PEHnniKbA">YOUTUBE</a></li>
+                        <li><a href="www.linkedin.com/in/yangl04">LINKEDIN</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>GERLOGU</h3>
+                    <ul>
+                        <li><a href="./index.html#Home">HOME</a></li>
+                        <li><a href="./index.html#portfolio">PORTFOLIO</a></li>
+                        <li><a href="./index.html#about">ABOUT ME</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yang Liu. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

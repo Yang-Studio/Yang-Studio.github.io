@@ -9,7 +9,7 @@
     backdrop-filter: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid transparent;
 }
 
 .menu-toggle {
@@ -103,26 +103,7 @@
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(12px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* 亮色模式下的导航栏样式 */
-body.light-mode .navbar {
-    background-color: transparent;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode .navbar .nav-link {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-body.light-mode .navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode .navbar.scrolled .nav-link {
-    text-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
@@ -233,6 +214,48 @@ body.light-mode .nav-link {
 .nav-controls button.active {
     background-color: var(--text-color);
     color: var(--bg-color);
+}
+
+/* Accessibility */
+.nav-link:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background-color: var(--bg-color);
+    }
+
+    .navbar.scrolled {
+        background-color: rgba(18, 18, 18, 0.95);
+    }
+
+    .logo,
+    .nav-link {
+        color: var(--text-color);
+    }
+}
+
+/* 亮色模式下的导航栏样式 */
+body.light-mode .navbar {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .navbar .nav-link {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .navbar.scrolled .nav-link {
+    text-shadow: none;
 }
 
 /* 响应式导航栏 */

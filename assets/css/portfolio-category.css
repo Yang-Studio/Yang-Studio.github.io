@@ -1,0 +1,306 @@
+/* 作品集分类页面样式 */
+.portfolio-category-section {
+    padding: 120px 0 60px;
+    min-height: 100vh;
+    background: var(--background-color);
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 动画背景效果 */
+.portfolio-category-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(255,255,255,0.05) 0%,
+        rgba(255,255,255,0.1) 25%,
+        rgba(255,255,255,0.15) 50%,
+        rgba(255,255,255,0.1) 75%,
+        rgba(255,255,255,0.05) 100%
+    );
+    background-size: 200% 200%;
+    animation: shine 8s linear infinite;
+    z-index: -1;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 200% 200%;
+    }
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portfolio-category-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+}
+
+.portfolio-category-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--link-color);
+    border-radius: 2px;
+}
+
+.portfolio-category-section p {
+    font-size: 18px;
+    margin-bottom: 60px;
+    text-align: center;
+    color: var(--text-secondary);
+    max-width: 600px;
+}
+
+/* 分类网格布局 */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 分类卡片样式 */
+.category-card {
+    position: relative;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 游戏设计卡片背景 */
+.category-card.game-design {
+    background-image: url('../photo/405/ShanHe.png');
+}
+
+/* UI/UX设计卡片背景 */
+.category-card.ui-design {
+    background-image: url('../photo/405/Execute_1.png');
+}
+
+/* 摄影作品卡片背景 */
+.category-card.photography {
+    background-image: url('../photo/405/LockOn_1.png');
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.4) 50%,
+        rgba(0,0,0,0.8) 100%
+    );
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.category-card:hover::before {
+    opacity: 0.9;
+}
+
+.category-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+}
+
+.category-content h3 {
+    font-size: 36px;
+    margin: 0;
+    color: var(--text-color);
+    transition: all 0.4s ease;
+    text-align: right;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.category-card:hover .category-content h3 {
+    transform: translateX(-10px);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+}
+
+.category-icon i {
+    font-size: 32px;
+    color: var(--link-color);
+    transition: all 0.4s ease;
+}
+
+.category-card:hover .category-icon {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.2);
+}
+
+.category-card:hover .category-icon i {
+    transform: scale(1.1);
+}
+
+.category-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    transition: all 0.4s ease;
+}
+
+.category-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: auto;
+}
+
+.category-stats span {
+    font-size: 14px;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+
+.category-card:hover .category-stats span {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+    }
+    
+    .category-card {
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-category-section {
+        padding: 100px 0 40px;
+    }
+    
+    .portfolio-category-section h2 {
+        font-size: 28px;
+    }
+    
+    .portfolio-category-section p {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 600px;
+    }
+    
+    .category-card {
+        height: 400px;
+    }
+    
+    .category-content {
+        padding: 30px;
+    }
+    
+    .category-content h3 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-category-section {
+        padding: 80px 0 30px;
+    }
+    
+    .portfolio-category-section h2 {
+        font-size: 24px;
+    }
+    
+    .portfolio-category-section p {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+    
+    .category-grid {
+        max-width: 400px;
+    }
+    
+    .category-card {
+        height: 350px;
+    }
+    
+    .category-content {
+        padding: 20px;
+    }
+    
+    .category-content h3 {
+        font-size: 28px;
+    }
+    
+    .category-stats span {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+} 

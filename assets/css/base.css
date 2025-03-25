@@ -1,18 +1,18 @@
 /* 全局样式 */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-primary), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: var(--line-height-base);
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow-x: hidden;
     position: relative;
-    font-size: 16px; /* 基础字体大小 */
-    text-rendering: optimizeLegibility; /* 优化文本渲染 */
-    -webkit-font-smoothing: antialiased; /* 平滑字体 */
-    -moz-osx-font-smoothing: grayscale; /* 平滑字体 */
+    font-size: var(--font-size-base);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* 高端背景效果 */
@@ -78,31 +78,67 @@ a:hover {
 
 /* 暗色模式变量 - 优化对比度 (符合WCAG AA标准) */
 :root {
-    --bg-color: #121212;
+    /* Color System */
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #121212;
     --text-color: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.9); /* 提高透明度以增加对比度 */
-    --text-tertiary: rgba(255, 255, 255, 0.75); /* 提高透明度以增加对比度 */
-    --link-color: #5dafff; /* 提高亮度以增加对比度，符合4.5:1对比度要求 */
-    --link-hover-color: #8cc5ff;
-    --footer-bg-color: #1a1a1a;
-    --card-bg-color: rgba(255, 255, 255, 0.1); /* 提高透明度以增加对比度 */
-    --card-hover-bg-color: rgba(255, 255, 255, 0.15);
-    --button-bg-color: #0078d4; /* 更高对比度的蓝色 */
-    --button-hover-bg-color: #2b88d8;
-    --button-text-color: #ffffff;
-    --focus-outline-color: #8cc5ff;
-    --error-color: #ff5252; /* 更高对比度的红色 */
-    --success-color: #4caf50;
-    --warning-color: #ffab40; /* 更高对比度的橙色 */
+    --text-light: #ffffff;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --error-color: #e74c3c;
+
+    /* Typography */
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Open Sans', sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.5;
+    --heading-line-height: 1.2;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    /* Border Radius */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 16px;
+
+    /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+
+    /* Z-index layers */
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-fixed: 1030;
+    --z-index-modal: 1040;
+    --z-index-popover: 1050;
+    --z-index-tooltip: 1060;
+
+    --bg-color: #121212;
+    --text-secondary: #ffffff;
+    --text-tertiary: #ffffff;
+    --link-color: #5dafff;
+    --link-hover-color: #8cc5ff;
+    --footer-bg-color: #1a1a1a;
+    --card-bg-color: rgba(255, 255, 255, 0.1);
+    --card-hover-bg-color: rgba(255, 255, 255, 0.15);
+    --button-bg-color: #0078d4;
+    --button-hover-bg-color: #2b88d8;
+    --button-text-color: #ffffff;
+    --focus-outline-color: #8cc5ff;
 }
 
 /* 各板块通用样式 */
@@ -119,7 +155,7 @@ a:hover {
     align-items: center;
     padding: 2rem 0;
     box-sizing: border-box;
-    /* 移除overflow-y: auto以消除滚动条 */
+    overflow: visible;
 }
 
 /* 内容容器 */
@@ -127,8 +163,8 @@ a:hover {
     width: 65%;
     margin: 0 auto;
     padding: 0 20px;
-    max-height: 90vh;
-    /* 移除overflow-y: auto以消除滚动条 */
+    max-height: none;
+    overflow: visible;
 }
 
 .section.visible {
@@ -163,4 +199,85 @@ a:hover {
     margin: 0 auto 20px;
     line-height: 1.8;
     color: var(--text-secondary);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    line-height: var(--heading-line-height);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Accessibility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Focus styles */
+:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+/* Responsive breakpoints */
+@media screen and (max-width: 1200px) {
+    :root {
+        --font-size-base: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --font-size-base: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --font-size-base: 13px;
+    }
 }

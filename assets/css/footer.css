@@ -1,17 +1,70 @@
 /* 页脚样式 */
 footer {
-    background-color: var(--footer-bg-color);
-    color: var(--text-color);
-    padding: 60px 40px 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    padding: 60px 0;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
     margin-top: 100px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    z-index: 10;
 }
 
 .footer-content {
-    max-width: 1200px;
+    width: 65%;
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin: 40px 0;
+    text-align: left;
+    width: 100%;
+}
+
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.footer-link:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    color: #ffffff;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.footer-social a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.footer-copyright {
+    margin-top: 20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .footer-info {
@@ -34,11 +87,10 @@ footer {
     color: var(--link-color);
 }
 
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    margin-top: 40px;
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .footer-section h3 {
@@ -53,6 +105,7 @@ footer {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .footer-section li {
@@ -60,12 +113,13 @@ footer {
 }
 
 .footer-section a {
-    color: var(--text-color);
+    color: #ffffff;
     text-decoration: none;
     font-size: 13px;
     letter-spacing: 0.5px;
     transition: color 0.3s ease;
     opacity: 0.8;
+    display: block;
 }
 
 .footer-section a:hover {
@@ -87,6 +141,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .footer-content {
+        width: 90%;
+        padding: 0 15px;
+    }
+    
     .footer-info {
         flex-direction: column;
         align-items: center;
@@ -95,10 +154,16 @@ footer {
 
     .footer-links {
         grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 }
 
 @media (max-width: 480px) {
+    .footer-content {
+        width: 95%;
+        padding: 0 10px;
+    }
+    
     .footer-links {
         grid-template-columns: 1fr;
     }

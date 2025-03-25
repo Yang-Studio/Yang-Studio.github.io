@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yang's Portfolio Categories - Game Design, Photography, and UI Design">
+    <meta name="keywords" content="Game Design, Photography, UI Design, Portfolio Categories">
+    <meta name="author" content="Yang">
+    <title>Portfolio Categories - Yang's Portfolio</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 预加载关键资源 - 优化加载策略 -->
+    <link rel="preload" href="./assets/photo/Yang.jpg" as="image">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- 引入CSS文件 -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/portfolio-category.css">
+    <!-- 引入JavaScript文件 -->
+    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/mobile-nav.js" defer></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="./index.html" class="logo" aria-label="Home">
+                    <img src="./assets/photo/Icon/MyLogo.png" alt="Logo" class="logo-img">
+                    <span>Yang</span>
+                </a>
+            </div>
+            <div class="nav-links" role="menubar" aria-label="主菜单">
+                <a href="./index.html#home" class="nav-link" data-section="home" role="menuitem" tabindex="0">Home</a>
+                <a href="./index.html#skills" class="nav-link" data-section="skills" role="menuitem" tabindex="0">Skills</a>
+                <a href="./index.html#about" class="nav-link" data-section="about" role="menuitem" tabindex="0">About</a>
+                <a href="./portfolio-category.html" class="nav-link active" data-section="portfolio" role="menuitem" tabindex="0">Portfolio</a>
+            </div>
+            <div class="nav-controls">
+                <a href="./assets/file/Resume_Yang.pdf" class="nav-link" role="menuitem" tabindex="0">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 作品集分类页面 -->
+    <section class="portfolio-category-section" style="margin: 0; border: 0; padding: 0;">
+        <div class="content-container">
+            
+            <div class="category-grid">
+                <!-- 游戏设计分类 -->
+                <a href="./portfolio-game.html" class="category-card game-design">
+                    <div class="category-content">
+                        <h3>Game Design</h3>
+                    </div>
+                </a>
+
+                <!-- UI/UX设计分类 -->
+                <a href="./portfolio-ui.html" class="category-card ui-design">
+                    <div class="category-content">
+                        <h3>UI/UX</h3>
+                    </div>
+                </a>
+
+                <!-- 摄影作品分类 -->
+                <a href="./portfolio-photo.html" class="category-card photography">
+                    <div class="category-content">
+                        <h3>Photography</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="margin: 0; border: 0; padding: 0;">
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>BEIJING, CHINA</span>
+                </div>
+                <div class="email-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>Lerically@163.com</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>LATEST PROJECTS</h3>
+                    <ul>
+                        <li><a href="https://bubono-bumperland.github.io/">BUBONO-BUMPERLAND</a></li>
+                        <li><a href="./coming-soon.html">INK</a></li>
+                        <li><a href="https://sites.google.com/d/1QKnyDd2Qq6rMUZv9yUS6erVlAeM-EDL-/p/1Pq3bVfn8ytE_36AvZwbjeHbTh89MWKZh/edit">SHANHE</a></li>
+                        <li><a href="./coming-soon.html">AUK ODESSEY</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>PORTFOLIO</h3>
+                    <ul>
+                        <li><a href="./portfolio-ui.html">UI/UX</a></li>
+                        <li><a href="./portfolio-game.html">GAME</a></li>
+                        <li><a href="./portfolio-photo.html">OTHER</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>SOCIAL NETWORKS</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/channel/UCKyptFZH1upVQ0PEHnniKbA">YOUTUBE</a></li>
+                        <li><a href="www.linkedin.com/in/yangl04">LINKEDIN</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Link</h3>
+                    <ul>
+                        <li><a href="index.html#home">HOME</a></li>
+                        <li><a href="portfolio-category.html">PORTFOLIO</a></li>
+                        <li><a href="index.html#about">ABOUT ME</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yang Liu. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

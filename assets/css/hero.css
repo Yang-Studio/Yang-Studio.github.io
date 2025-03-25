@@ -7,7 +7,6 @@
     align-items: center;
     text-align: center;
     position: relative;
-    overflow: hidden;
     background-color: black;
 }
 
@@ -121,7 +120,7 @@
 
 .hero p {
     font-size: 24px;
-    color: #0077ff;
+    color: #ffffff;
     z-index: 1;
     max-width: 600px;
     margin: 0 auto;

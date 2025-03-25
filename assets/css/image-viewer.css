@@ -1,0 +1,119 @@
+/* 图片查看器样式 */
+.image-viewer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.image-viewer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-viewer-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.image-viewer-image {
+    max-width: 100%;
+    max-height: 90vh;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    cursor: zoom-out;
+}
+
+.image-viewer-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.image-viewer-close:hover {
+    transform: scale(1.2);
+}
+
+.image-viewer-caption {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+/* 为可点击图片添加样式 */
+.clickable-image {
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.clickable-image:hover {
+    transform: scale(1.03);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .image-viewer-container {
+        max-width: 95%;
+    }
+    
+    .image-viewer-close {
+        top: -35px;
+        right: 0;
+    }
+
+    .image-viewer-caption {
+        font-size: 14px;
+    }
+}
+
+/* Accessibility */
+.close-button:focus-visible,
+.nav-button:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .viewer-overlay {
+        background-color: rgba(0, 0, 0, 0.95);
+    }
+}

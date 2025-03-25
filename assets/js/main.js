@@ -1,54 +1,126 @@
-// 监听滚动事件，添加section的显示动画和导航栏背景切换
-document.addEventListener('DOMContentLoaded', () => {
-    // 导航栏滚动效果
-    const navbar = document.querySelector('.navbar');
-    const heroSection = document.querySelector('.hero');
-    
-    const handleScroll = () => {
-        if (heroSection) {
-            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-            if (window.scrollY > heroBottom - navbar.offsetHeight) {
+// 核心功能模块
+const Core = {
+    init() {
+        this.initNavigation();
+        this.initScrollEffects();
+        this.initLazyLoading();
+        this.initAccessibility();
+    },
+
+    // 导航功能
+    initNavigation() {
+        const navbar = document.querySelector('.navbar');
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
+
+        // 滚动效果
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // 移动端菜单
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuButton.setAttribute('aria-expanded', 
+                    navLinks.classList.contains('active'));
+            });
         }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // 初始化时执行一次
-    const sections = document.querySelectorAll('.section');
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.2
-    };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // 关闭移动端菜单
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    },
+
+    // 滚动效果
+    initScrollEffects() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // 观察所有section元素
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('animate-on-scroll');
+            observer.observe(section);
+        });
+
+        // 观察所有带有animate-on-scroll类的元素
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    },
+
+    // 图片懒加载
+    initLazyLoading() {
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.dataset.src;
+            });
+        } else {
+            // 回退方案
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+            document.body.appendChild(script);
+        }
+    },
+
+    // 可访问性增强
+    initAccessibility() {
+        // 键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('using-keyboard');
             }
         });
-    }, options);
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-    
-    // 平滑滚动功能
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('using-keyboard');
+        });
+
+        // ARIA标签
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === window.location.pathname) {
+                link.setAttribute('aria-current', 'page');
             }
         });
-    });
+    }
+};
+
+// 错误处理
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo + '\nColumn: ' + columnNo + '\nError object: ' + JSON.stringify(error));
+    return false;
+};
+
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+    Core.init();
 });

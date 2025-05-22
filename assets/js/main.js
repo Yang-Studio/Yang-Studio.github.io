@@ -120,6 +120,21 @@ window.onerror = function(msg, url, lineNo, columnNo, error) {
     return false;
 };
 
+// 处理技能节点的悬停效果
+document.querySelectorAll('.skill-node[data-projects]').forEach(node => {
+    node.addEventListener('mouseenter', function() {
+        const projects = this.getAttribute('data-projects').split('|');
+        const randomProject = projects[Math.floor(Math.random() * projects.length)];
+        const [projectName, imagePath] = randomProject.split(':');
+        
+        // 设置项目图片
+        this.style.setProperty('--project-image', `url('${imagePath}')`);
+        
+        // 设置项目名称
+        this.setAttribute('data-project-name', projectName);
+    });
+});
+
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
     Core.init();

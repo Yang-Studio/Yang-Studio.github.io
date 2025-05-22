@@ -7,21 +7,17 @@
     <meta name="keywords" content="Game Design, Photography, UI Design, Portfolio">
     <meta name="author" content="Yang">
     <title>Yang's Portfolio</title>
-    <!-- 引入 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- 预加载关键资源 - 优化加载策略 -->
     <link rel="preload" href="./assets/photo/Yang.jpg" as="image">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://www.youtube.com/embed/Lmzynyv4Apo?autoplay=1&mute=1&loop=1&playlist=Lmzynyv4Apo&controls=0">
-    <!-- 引入CSS文件 -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- 引入JavaScript文件 -->
     <script src="./assets/js/main.js" defer></script>
     <script src="./assets/js/mobile-nav.js" defer></script>
 </head>
 <body>
-    <nav class="navbar" role="navigation" aria-label="主导航">
+    <nav class="navbar" role="navigation" aria-label="navbar">
         <div class="nav-container">
             <div class="logo-container">
                 <a href="#" class="logo" aria-label="Home">
@@ -29,7 +25,7 @@
                     <span>Yang</span>
                 </a>
             </div>
-            <div class="nav-links" role="menubar" aria-label="主菜单">
+            <div class="nav-links" role="menubar" aria-label="main menu">
                 <a href="#home" class="nav-link" data-section="home" role="menuitem" tabindex="0">Home</a>
                 <a href="#skills" class="nav-link" data-section="skills" role="menuitem" tabindex="0">Skills</a>
                 <a href="#about" class="nav-link" data-section="about" role="menuitem" tabindex="0">About</a>
@@ -42,7 +38,7 @@
     </nav>
 
     <!-- 首页 -->
-    <div class="hero" id="home" role="banner" aria-label="首页横幅">
+    <div class="hero" id="home" role="banner" aria-label="banner">
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/WDAzghagGvY?autoplay=1&mute=1&loop=1&playlist=WDAzghagGvY&controls=0&disablekb=1&playsinline=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;" poster="./assets/photo/405/ShanHe.png" aria-hidden="true"></iframe>
         <h1>Yang's Portfolio</h1>
         <p>Game Designer</p>
@@ -54,14 +50,14 @@
         <div class="content-container">
             <div class="portfolio-grid">
                 <div class="portfolio-header">
-                    <h3 class="typewriter-title">My Work<span class="highlight-text">|</span></h3>
+                    <h3 class="typewriter-title">My Project<span class="highlight-text">|</span></h3>
                     <p class="portfolio-description">Check out the games I have worked on!</p>
                     <a href="./coming-soon.html" class="view-portfolio-btn portfolio-nav"><i class="fas fa-eye"></i> View Portfolio</a>
                 </div>
                 
                 <div class="portfolio-items">
                     <!-- 项目1 -->
-                    <div class="portfolio-card" onclick="window.open('./ShanHe.html')" tabindex="0" role="button" aria-label="查看Project Downbelow项目详情">
+                    <div class="portfolio-card" onclick="window.open('./ShanHe.html')" tabindex="0" role="button" aria-label="Detail">
                         <div class="card-image">
                             <img src="./assets/photo/405/Logo.png" alt="Vigor">
                         </div>
@@ -148,23 +144,21 @@
                     </div>
 
                     <!-- 项目5 -->
-                    <div class="portfolio-card" onclick="window.open('./coming-soon.html')">
+                    <div class="portfolio-card" onclick="window.open('./BubonoCraft.html')">
                         <div class="card-image">
                             <img src="./assets/photo/E_Sheep/Title.png" alt="Ratchet & Clank UI Prototype">
                         </div>
                         <div class="card-content">
                             <h4>E_Sheep</h4>
                             <div class="software-icons">
-                                <div class="software-icon"><img src="./assets/photo/Icon/C4DLogo.png" alt="Figma"></div>
-                                <div class="software-icon"><img src="./assets/photo/Icon/UELogo.png" alt="Pencil Ruler"></div>
-                                <div class="software-icon"><img src="./assets/photo/Icon/MayaLogo.png" alt="Palette"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/UELogo.png" alt="Unreal Engine"></div>
+                                <div class="software-icon"><img src="./assets/photo/Icon/MayaLogo.png" alt="Autodesk Maya"></div>
                                 <div class="software-icon"><img src="./assets/photo/Icon/BlenderLogo.png" alt="Blender"></div>
                                 <div class="software-icon"><img src="./assets/photo/Icon/PTLogo.png" alt="Substance 3D painter"></div>
                             </div>
                             <div class="project-tags">
-                                <span class="project-tag">Fashion Design</span>
+                                <span class="project-tag">Game development</span>
                                 <span class="project-tag">UE5</span>
-                                <span class="project-tag">C4D</span>
                             </div>
                         </div>
                     </div>
@@ -180,8 +174,49 @@
         </div>
     </section>
     <!-- 技能树 -->
-   
-    
+    <section id="skills" class="section">
+        <div class="content-container">
+            <h3>Skill Journey</h3>
+            <div class="skill-map">
+                <!-- 系统设计 -->
+                <div class="skill-row system-design">
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Game Mechanics</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Core Loop</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Reward Systems</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">UE Blueprint</div>
+                    <div class="skill-node" data-projects="BubonoCraft:./assets/photo/E_Sheep/Title.png">Python</div>
+                </div>
+                <!-- 关卡设计 -->
+                <div class="skill-row level-design">
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Spatial Rhythm</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Greyboxing</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Puzzle & Combat Integration</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">UE Blockout</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Photography</div>
+                </div>
+                <!-- 环境设计 -->
+                <div class="skill-row environment-design">
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Maya Modeling</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Adobe Substance 3D Painter</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Blender</div>
+                </div>
+                <!-- 软件 -->
+                <div class="skill-row software">
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Adobe Photoshop</div>
+                    <div class="skill-node" data-projects="BubonoCraft:./assets/photo/E_Sheep/Title.png">Figma</div>
+                    <div class="skill-node" data-projects="ShanHe:./assets/photo/405/Logo.png">Git/Perforce</div>
+                </div>
+            </div>
+            <!-- 图例 -->
+            <div class="skill-legend">
+                <span class="legend system-design"></span> Game Development
+                <span class="legend level-design"></span> Level Design
+                <span class="legend environment-design"></span> Environment Design
+                <span class="legend software"></span> Other Software
+            </div>
+        </div>
+    </section>
+
     <!-- 关于我 -->
     <section id="about" class="section">
         <div class="content-container">
@@ -204,128 +239,12 @@
                     <a href="https://www.instagram.com/yangliu_leric/" target="_blank" title="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
+                    <a href="https://bsky.app/profile/yangl-04.bsky.social" target="_blank" title="Bluesky">
+                        <i class="fas fa-feather"></i>
+                    </a>
                 </div>
             </div>
         </div>
-        </div>
-    </section>
-
-    <!-- 作品展示 -->
-    <section id="skills" class="section">
-        <div class="content-container">
-            <h3>My Skills</h3>
-            <p>A comprehensive overview of my professional skills and expertise</p>
-            
-            <div class="skills-container">
-                <!-- 技能分类 -->
-                <div class="skills-category">
-                    <div class="category-header">
-                        <i class="fas fa-gamepad"></i>
-                        <h4>Game Design</h4>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>System Design</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Environment Design</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Level Design</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skills-category">
-                    <div class="category-header">
-                        <i class="fas fa-laptop-code"></i>
-                        <h4>Software</h4>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Unreal Engine 5</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Maya</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Adobe Substance 3D Painter</span>
-                                <span>70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 70%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skills-category">
-                    <div class="category-header">
-                        <i class="fas fa-code"></i>
-                        <h4>Programming</h4>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>C#</span>
-                                <span>65%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 65%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Python</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>JS</span>
-                                <span>60%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 60%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 

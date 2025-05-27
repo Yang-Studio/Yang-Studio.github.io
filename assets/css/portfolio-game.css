@@ -1,0 +1,313 @@
+/* 游戏作品集页面样式 */
+.portfolio-game-section {
+    padding: 120px 0 60px;
+    min-height: 100vh;
+    background: transparent;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.content-container {
+    background: transparent;
+}
+
+/* 页面标题样式 */
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.portfolio-header h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+}
+
+.portfolio-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--link-color);
+    border-radius: 2px;
+}
+
+.portfolio-header p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 作品网格布局 */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: transparent;
+}
+
+/* 作品卡片样式 */
+.portfolio-card {
+    background: transparent;
+    border-radius: 20px;
+    overflow: visible;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-15px) rotateX(10deg) rotateY(10deg);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.3),
+        0 15px 20px rgba(0,0,0,0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-card:hover .card-image::before {
+    opacity: 1;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover .card-image img {
+    transform: scale(1.1) translateZ(20px);
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%);
+    color: white;
+    transform: translateY(20px) translateZ(10px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.portfolio-card:hover .card-content {
+    transform: translateY(0) translateZ(30px);
+    opacity: 1;
+}
+
+.card-content h4 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* 软件图标样式 */
+.software-icons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.software-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.software-icon:hover {
+    transform: scale(1.1);
+}
+
+.software-icon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* 项目标签样式 */
+.project-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    position: relative;
+    z-index: 3;
+    transform: translateZ(40px);
+}
+
+.project-tag {
+    padding: 6px 15px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+}
+
+.project-tag:hover {
+    background: var(--link-color);
+    color: white;
+    transform: translateY(-2px) translateZ(50px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* 响应式布局 */
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1200px;
+        gap: 60px;
+    }
+    
+    .card-image {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-game-section {
+        padding: 100px 0 40px;
+    }
+    
+    .portfolio-header h2 {
+        font-size: 28px;
+    }
+    
+    .portfolio-header p {
+        font-size: 16px;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        gap: 40px;
+    }
+    
+    .card-image {
+        height: 300px;
+    }
+    
+    .card-content {
+        padding: 25px;
+        min-height: 180px;
+    }
+    
+    .card-content h4 {
+        font-size: 24px;
+    }
+    
+    .project-tag {
+        padding: 5px 12px;
+        font-size: 13px;
+    }
+    
+    .portfolio-card:hover {
+        transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-game-section {
+        padding: 80px 0 30px;
+    }
+    
+    .portfolio-header h2 {
+        font-size: 24px;
+    }
+    
+    .portfolio-header p {
+        font-size: 14px;
+    }
+    
+    .portfolio-grid {
+        max-width: 400px;
+        gap: 30px;
+    }
+    
+    .card-image {
+        height: 250px;
+    }
+    
+    .card-content {
+        padding: 20px;
+        min-height: 160px;
+    }
+    
+    .card-content h4 {
+        font-size: 20px;
+    }
+    
+    .project-tag {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+    
+    .software-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .software-icon img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .portfolio-card:hover {
+        transform: translateY(-5px) rotateX(3deg) rotateY(3deg);
+    }
+} 

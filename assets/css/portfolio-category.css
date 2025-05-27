@@ -42,7 +42,7 @@
 
 .content-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
@@ -82,8 +82,8 @@
 /* 分类网格布局 */
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
+    gap: 80px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -94,9 +94,10 @@
 /* 分类卡片样式 */
 .category-card {
     position: relative;
-    height: 500px;
+    height: 600px;
+    width: 100%;
     border-radius: 20px;
-    overflow: hidden;
+    overflow: visible;
     text-decoration: none;
     color: var(--text-color);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -110,11 +111,6 @@
 /* 游戏设计卡片背景 */
 .category-card.game-design {
     background-image: url('../photo/405/ShanHe.png');
-}
-
-/* UI/UX设计卡片背景 */
-.category-card.ui-design {
-    background-image: url('../photo/405/Execute_1.png');
 }
 
 /* 摄影作品卡片背景 */
@@ -136,6 +132,7 @@
     );
     opacity: 0.7;
     transition: opacity 0.4s ease;
+    border-radius: 20px;
 }
 
 .category-card:hover {
@@ -155,6 +152,8 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 40px;
+    width: 120%;
+    margin-left: -10%;
 }
 
 .category-content h3 {
@@ -164,10 +163,16 @@
     transition: all 0.4s ease;
     text-align: right;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: auto;
 }
 
 .category-card:hover .category-content h3 {
     transform: translateX(-10px);
+    background: rgba(0,0,0,0.8);
 }
 
 .category-icon {
@@ -227,12 +232,18 @@
 /* 响应式调整 */
 @media (max-width: 1200px) {
     .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 900px;
+        grid-template-columns: repeat(2, minmax(350px, 1fr));
+        max-width: 1000px;
+        gap: 60px;
     }
     
     .category-card {
-        height: 450px;
+        height: 500px;
+    }
+    
+    .category-content {
+        width: 110%;
+        margin-left: -5%;
     }
 }
 
@@ -252,20 +263,17 @@
     
     .category-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
-        max-width: 600px;
+        gap: 40px;
+        max-width: 500px;
     }
     
     .category-card {
-        height: 400px;
+        height: 450px;
     }
     
     .category-content {
-        padding: 30px;
-    }
-    
-    .category-content h3 {
-        font-size: 32px;
+        width: 100%;
+        margin-left: 0;
     }
 }
 
@@ -288,11 +296,7 @@
     }
     
     .category-card {
-        height: 350px;
-    }
-    
-    .category-content {
-        padding: 20px;
+        height: 400px;
     }
     
     .category-content h3 {

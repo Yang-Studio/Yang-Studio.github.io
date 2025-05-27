@@ -135,6 +135,73 @@ document.querySelectorAll('.skill-node[data-projects]').forEach(node => {
     });
 });
 
+// 技能节点预览功能
+document.addEventListener('DOMContentLoaded', function() {
+    const skillNodes = document.querySelectorAll('.skill-node');
+    
+    skillNodes.forEach(node => {
+        // 创建预览元素
+        const preview = document.createElement('div');
+        preview.className = 'skill-preview';
+        const img = document.createElement('img');
+        img.src = node.dataset.image;
+        preview.appendChild(img);
+        node.appendChild(preview);
+
+        // 添加点击事件
+        node.addEventListener('click', function() {
+            const link = this.dataset.link;
+            if (link) {
+                window.location.href = link;
+            }
+        });
+    });
+});
+
+// 视频加载控制
+document.addEventListener('DOMContentLoaded', function() {
+    const videoFrame = document.querySelector('.hero iframe');
+    if (videoFrame) {
+        // 监听视频加载完成事件
+        videoFrame.addEventListener('load', function() {
+            // 延迟显示视频，确保加载完成
+            setTimeout(() => {
+                videoFrame.style.opacity = '1';
+            }, 1000);
+        });
+    }
+});
+
+// 滚动箭头功能
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollDown = document.querySelector('.scroll-down');
+    if (scrollDown) {
+        scrollDown.addEventListener('click', function() {
+            const projectOverview = document.querySelector('#project-overview');
+            if (projectOverview) {
+                projectOverview.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+
+        // 添加键盘访问支持
+        scrollDown.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const projectOverview = document.querySelector('#project-overview');
+                if (projectOverview) {
+                    projectOverview.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    }
+});
+
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
     Core.init();

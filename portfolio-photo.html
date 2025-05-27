@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yang's Photography Portfolio - A collection of photography works">
+    <meta name="keywords" content="Photography, Portfolio, Photo Gallery">
+    <meta name="author" content="Yang">
+    <title>Photography Portfolio - Yang's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="./assets/photo/Yang.jpg" as="image">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/portfolio-photo.css">
+    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/mobile-nav.js" defer></script>
+    <script src="./assets/js/photo-gallery.js" defer></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="主导航">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="./index.html" class="logo" aria-label="Home">
+                    <img src="./assets/photo/Icon/MyLogo.png" alt="Logo" class="logo-img">
+                    <span>Yang</span>
+                </a>
+            </div>
+            <div class="nav-links" role="menubar" aria-label="主菜单">
+                <a href="./index.html#home" class="nav-link" data-section="home" role="menuitem" tabindex="0">Home</a>
+                <a href="./index.html#skills" class="nav-link" data-section="skills" role="menuitem" tabindex="0">Skills</a>
+                <a href="./index.html#about" class="nav-link" data-section="about" role="menuitem" tabindex="0">About</a>
+                <a href="./portfolio-category.html" class="nav-link active" data-section="portfolio" role="menuitem" tabindex="0">Portfolio</a>
+            </div>
+            <div class="nav-controls">
+                <a href="./assets/file/Resume_Yang.pdf" class="nav-link" role="menuitem" tabindex="0">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="portfolio-photo-section">
+        <div class="content-container">
+            <div class="portfolio-header">
+                <h2>Photography Works</h2>
+                <p>Explore my photography journey through these collections</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- 相册1 -->
+                <div class="portfolio-card" data-album="nature">
+                    <div class="card-image">
+                        <img src="./assets/photo/Photo/Nature/1.jpg" alt="Nature Photography">
+                    </div>
+                    <div class="card-content">
+                        <h4>Nature</h4>
+                        <div class="software-icons">
+                            <div class="software-icon"><img src="./assets/photo/Icon/PSLogo.png" alt="Adobe Photoshop"></div>
+                            <div class="software-icon"><img src="./assets/photo/Icon/LRLogo.png" alt="Adobe Lightroom"></div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">Landscape</span>
+                            <span class="project-tag">Nature</span>
+                            <span class="project-tag">Travel</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 相册2 -->
+                <div class="portfolio-card" data-album="urban">
+                    <div class="card-image">
+                        <img src="./assets/photo/Photo/Urban/1.jpg" alt="Urban Photography">
+                    </div>
+                    <div class="card-content">
+                        <h4>Urban</h4>
+                        <div class="software-icons">
+                            <div class="software-icon"><img src="./assets/photo/Icon/PSLogo.png" alt="Adobe Photoshop"></div>
+                            <div class="software-icon"><img src="./assets/photo/Icon/LRLogo.png" alt="Adobe Lightroom"></div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">City</span>
+                            <span class="project-tag">Architecture</span>
+                            <span class="project-tag">Street</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 相册3 -->
+                <div class="portfolio-card" data-album="portrait">
+                    <div class="card-image">
+                        <img src="./assets/photo/Photo/Portrait/1.jpg" alt="Portrait Photography">
+                    </div>
+                    <div class="card-content">
+                        <h4>Portrait</h4>
+                        <div class="software-icons">
+                            <div class="software-icon"><img src="./assets/photo/Icon/PSLogo.png" alt="Adobe Photoshop"></div>
+                            <div class="software-icon"><img src="./assets/photo/Icon/LRLogo.png" alt="Adobe Lightroom"></div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">People</span>
+                            <span class="project-tag">Portrait</span>
+                            <span class="project-tag">Studio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图片查看器 -->
+    <div class="photo-viewer" id="photoViewer">
+        <div class="viewer-container">
+            <button class="close-btn" aria-label="关闭"><i class="fas fa-times"></i></button>
+            <button class="nav-btn prev-btn" aria-label="上一张"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn next-btn" aria-label="下一张"><i class="fas fa-chevron-right"></i></button>
+            <div class="main-image-container">
+                <img src="" alt="" class="main-image">
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnails"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>BEIJING, CHINA</span>
+                </div>
+                <div class="email-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>Lerically@163.com</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>LATEST PROJECTS</h3>
+                    <ul>
+                        <li><a href="https://bubono-bumperland.github.io/">BUBONO-BUMPERLAND</a></li>
+                        <li><a href="./coming-soon.html">INK</a></li>
+                        <li><a href="https://sites.google.com/d/1QKnyDd2Qq6rMUZv9yUS6erVlAeM-EDL-/p/1Pq3bVfn8ytE_36AvZwbjeHbTh89MWKZh/edit">SHANHE</a></li>
+                        <li><a href="./coming-soon.html">AUK ODESSEY</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>PORTFOLIO</h3>
+                    <ul>
+                        <li><a href="./portfolio-game.html">GAME</a></li>
+                        <li><a href="./portfolio-other.html">OTHER</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>SOCIAL NETWORKS</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/channel/UCKyptFZH1upVQ0PEHnniKbA">YOUTUBE</a></li>
+                        <li><a href="www.linkedin.com/in/yangl04">LINKEDIN</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Link</h3>
+                    <ul>
+                        <li><a href="index.html#home">HOME</a></li>
+                        <li><a href="portfolio-category.html">PORTFOLIO</a></li>
+                        <li><a href="index.html#about">ABOUT ME</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yang Liu. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
